@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PathSense - User Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            font-family: 'Atkinson Hyperlegible Next', sans-serif;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #76777d;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#d8dadc",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-secondary-fixed": "#00201d",
+                        "inverse-primary": "#bec6e0",
+                        "primary": "#000000",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "secondary-fixed-dim": "#6bd8cb",
+                        "tertiary-container": "#2f1500",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary-container": "#c76c00",
+                        "primary-fixed": "#dae2fd",
+                        "error": "#ba1a1a",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-fixed": "#131b2e",
+                        "on-secondary-fixed-variant": "#005049",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "tertiary-fixed": "#ffdcc3",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-variant": "#e0e3e5",
+                        "on-primary-container": "#7c839b",
+                        "on-surface-variant": "#45464d",
+                        "on-secondary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "surface-container": "#eceef0",
+                        "surface-bright": "#f7f9fb",
+                        "surface-tint": "#565e74",
+                        "primary-container": "#131b2e",
+                        "on-background": "#191c1e",
+                        "surface-container-highest": "#e0e3e5",
+                        "outline": "#76777d",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#006f66",
+                        "secondary-container": "#86f2e4",
+                        "surface": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "secondary": "#006a61",
+                        "outline-variant": "#c6c6cd",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed": "#2f1500",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "secondary-fixed": "#89f5e7",
+                        "tertiary": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "1.5rem",
+                        "stack-sm": "0.75rem",
+                        "touch-target-min": "48px",
+                        "margin-desktop": "2.5rem",
+                        "margin-mobile": "1.25rem",
+                        "stack-lg": "3rem",
+                        "stack-md": "1.5rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Atkinson Hyperlegible Next"],
+                        "label-lg": ["Atkinson Hyperlegible Next"],
+                        "headline-lg": ["Atkinson Hyperlegible Next"],
+                        "headline-xl": ["Atkinson Hyperlegible Next"],
+                        "body-lg": ["Atkinson Hyperlegible Next"],
+                        "body-md": ["Atkinson Hyperlegible Next"],
+                        "label-md": ["Atkinson Hyperlegible Next"],
+                        "headline-md": ["Atkinson Hyperlegible Next"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "700"}],
+                        "label-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "700"}],
+                        "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "800"}],
+                        "body-lg": ["20px", {"lineHeight": "30px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "body-md": ["18px", {"lineHeight": "28px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface flex min-h-screen overflow-x-hidden">
+<!-- SideNavBar (Shared Component) -->
+<nav class="hidden lg:flex flex-col h-screen p-gutter gap-stack-md bg-surface-container-lowest border-r-2 border-outline-variant w-72 fixed left-0 top-0 z-40">
+<div class="mb-stack-lg">
+<h1 class="font-headline-lg text-headline-lg text-primary">PathSense</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Accessible Navigation</p>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Home -->
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 font-label-lg text-label-lg rounded-full" href="#">
+<span class="material-symbols-outlined">home</span>
+<span>Home</span>
+</a>
+<!-- Profile (ACTIVE) -->
+<a class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-full border-2 border-secondary font-label-lg text-label-lg active:scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">person</span>
+<span>Profile</span>
+</a>
+<!-- Community Reports -->
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 font-label-lg text-label-lg rounded-full" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span>Community Reports</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 font-label-lg text-label-lg rounded-full" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</div>
+<div class="mt-auto pt-stack-md border-t border-outline-variant">
+<button class="w-full flex items-center justify-center gap-2 bg-secondary text-on-secondary py-3 px-6 rounded font-label-lg text-label-lg font-bold border-2 border-transparent hover:border-primary transition-all duration-200">
+                Give Review
+            </button>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-1 lg:ml-72 flex flex-col min-h-screen">
+<!-- TopAppBar (Shared Component) -->
+<header class="flex justify-between items-center px-gutter py-4 w-full sticky top-0 z-50 bg-background border-b-2 border-outline-variant">
+<div class="flex items-center gap-4">
+<span class="lg:hidden material-symbols-outlined text-primary cursor-pointer">menu</span>
+<span class="font-headline-xl text-headline-xl text-primary">Profile</span>
+</div>
+<div class="flex items-center gap-stack-sm">
+<div class="hidden md:flex items-center border-2 border-outline-variant rounded px-4 py-2 bg-surface-container-low min-w-[300px]">
+<span class="material-symbols-outlined text-on-surface-variant mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 w-full text-body-md font-body-md outline-none" placeholder="Search" type="text"/>
+<button class="font-label-md text-label-md text-primary ml-2 uppercase tracking-wider">Filter</button>
+</div>
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container transition-colors rounded-full">notifications</button>
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container transition-colors rounded-full">account_circle</button>
+</div>
+</header>
+<div class="p-gutter flex flex-col gap-stack-lg max-w-7xl mx-auto w-full">
+<!-- Profile Hero Section -->
+<section class="bento-grid">
+<!-- User Identity Card -->
+<div class="col-span-12 md:col-span-8 bg-surface-container-lowest border-2 border-outline-variant p-8 flex flex-col md:flex-row gap-8 items-start md:items-center">
+<div class="relative">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-secondary shadow-lg">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a smiling person with short dark hair, wearing a high-contrast teal and navy jacket. The background is a crisp, bright, out-of-focus modern city park in daylight, matching the light-mode corporate aesthetic of PathSense. Soft, natural lighting highlights the subject's features, conveying empathy and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT2rrkFwZmpBSsfdhQHsH0GIrc-uCGBV-aRkpQuOikULbDbQ6VnAS4CzuPQ27iPaJzvMswsbUiice-yszUcqA0s2oZ8dsjH91pGvyixjUduTqRQ4b7E1gEO8MMa7rEzFMtuAfdx9TAcPurcs5SnZwH-nBHw7ucNYMVk-x5jq353C-SN1T67gxNOsoRIA8d0Hmzk21G18ZECwCTu8TyEX57nPX0HwKP61usUcZfh5dQT6FFA14CrJep"/>
+</div>
+<button class="absolute bottom-0 right-0 bg-primary text-on-primary p-2 rounded-full border-2 border-surface-container-lowest material-symbols-outlined" style="font-size: 18px;">edit</button>
+</div>
+<div class="flex-1">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-1">Alex Chen</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-4">Member since June 2023 • Community Guide</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 font-label-md text-label-md rounded border border-secondary">verified_user Verified Member</span>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 font-label-md text-label-md rounded border border-tertiary-fixed-dim">stars 128 Points</span>
+</div>
+</div>
+<div class="w-full md:w-auto">
+<button class="w-full md:w-auto bg-secondary text-on-secondary font-bold px-8 py-3 hover:border-primary border-2 border-transparent transition-all">Edit Personal Info</button>
+</div>
+</div>
+<!-- Stats Dashboard (Small Bento Items) -->
+<div class="col-span-6 md:col-span-2 bg-surface-container-lowest border-2 border-outline-variant p-6 flex flex-col items-center justify-center text-center">
+<span class="font-headline-lg text-headline-lg text-primary">24</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Reviews Given</span>
+</div>
+<div class="col-span-6 md:col-span-2 bg-surface-container-lowest border-2 border-outline-variant p-6 flex flex-col items-center justify-center text-center">
+<span class="font-headline-lg text-headline-lg text-primary">15</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Alerts Sent</span>
+</div>
+</section>
+<!-- Accessibility Profile Section -->
+<section>
+<div class="flex items-center gap-4 mb-stack-md">
+<span class="material-symbols-outlined text-secondary" style="font-size: 32px;">accessibility_new</span>
+<h3 class="font-headline-md text-headline-md">My Accessibility Profile</h3>
+</div>
+<div class="bg-surface-container-low border-2 border-outline-variant p-8">
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-2xl">Toggle your specific needs to personalize your navigation results. This information helps us highlight routes and locations that work best for you.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Toggle Item 1 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest border-2 border-secondary rounded-xl transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" style="font-size: 28px;">accessible</span>
+<div>
+<p class="font-label-lg text-label-lg">Wheelchair Access</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Prioritize step-free</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Toggle Item 2 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest border-2 border-outline-variant rounded-xl hover:border-primary transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">visibility</span>
+<div>
+<p class="font-label-lg text-label-lg">Low Vision</p>
+<p class="font-label-md text-label-md text-on-surface-variant">High contrast cues</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Toggle Item 3 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest border-2 border-outline-variant rounded-xl hover:border-primary transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">hearing</span>
+<div>
+<p class="font-label-lg text-label-lg">Hearing Assistance</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Visual notifications</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Toggle Item 4 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest border-2 border-outline-variant rounded-xl hover:border-primary transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">psychology</span>
+<div>
+<p class="font-label-lg text-label-lg">Neurodiversity</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Quiet route preference</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Toggle Item 5 -->
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest border-2 border-outline-variant rounded-xl hover:border-primary transition-all">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" style="font-size: 28px;">assist_walker</span>
+<div>
+<p class="font-label-lg text-label-lg">Limited Mobility</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Frequent rest stops</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-stack-lg">
+<!-- Review History -->
+<div class="lg:col-span-2">
+<div class="flex items-center justify-between mb-stack-md">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" style="font-size: 32px;">history</span>
+<h3 class="font-headline-md text-headline-md">Recent Reviews</h3>
+</div>
+<button class="font-label-lg text-label-lg text-secondary underline hover:text-primary transition-colors">See all</button>
+</div>
+<div class="space-y-6">
+<!-- Review Card 1 -->
+<div class="bg-surface-container-lowest border-2 border-outline-variant p-6 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-md text-headline-md" style="font-size: 20px;">Main Central Station</h4>
+<p class="font-label-md text-label-md text-on-surface-variant">October 12, 2023</p>
+</div>
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+<span class="material-symbols-outlined text-outline">star</span>
+</div>
+</div>
+<!-- Rating Bars -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-surface-container-low p-4 rounded">
+<div class="space-y-1">
+<div class="flex justify-between font-label-md text-label-md">
+<span>Step-free access</span>
+<span>5/5</span>
+</div>
+<div class="flex gap-1 h-2">
+<div class="flex-1 bg-primary"></div><div class="flex-1 bg-primary"></div><div class="flex-1 bg-primary"></div><div class="flex-1 bg-primary"></div><div class="flex-1 bg-primary"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-md text-label-md">
+<span>Signage Clarity</span>
+<span>3/5</span>
+</div>
+<div class="flex gap-1 h-2">
+<div class="flex-1 bg-primary"></div><div class="flex-1 bg-primary"></div><div class="flex-1 bg-primary"></div><div class="flex-1 border-2 border-outline"></div><div class="flex-1 border-2 border-outline"></div>
+</div>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface">The main elevators are working again, but the signage to find the accessible route from Platform 4 is still very confusing. I recommend taking the north exit for the flattest path to the bus terminal.</p>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined" style="font-size: 20px;">thumb_up</span> 12 Helpful</button>
+<button class="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined" style="font-size: 20px;">chat_bubble</span> 2 Comments</button>
+</div>
+</div>
+<!-- Review Card 2 -->
+<div class="bg-surface-container-lowest border-2 border-outline-variant p-6 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline-md text-headline-md" style="font-size: 20px;">City Library - West Entrance</h4>
+<p class="font-label-md text-label-md text-on-surface-variant">September 28, 2023</p>
+</div>
+<div class="flex gap-1">
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+<span class="material-symbols-outlined text-primary filled-icon">star</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface">Perfect automated doors and a very wide ramp. Staff are trained in basic ASL and were extremely helpful when I asked for directions to the braille section.</p>
+<div class="flex gap-4">
+<button class="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined" style="font-size: 20px;">thumb_up</span> 8 Helpful</button>
+<button class="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant hover:text-primary"><span class="material-symbols-outlined" style="font-size: 20px;">chat_bubble</span> 0 Comments</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Achievements Sidebar -->
+<div class="lg:col-span-1">
+<div class="flex items-center gap-4 mb-stack-md">
+<span class="material-symbols-outlined text-secondary" style="font-size: 32px;">military_tech</span>
+<h3 class="font-headline-md text-headline-md">Achievements</h3>
+</div>
+<div class="bg-surface-container-low border-2 border-outline-variant p-6 flex flex-col gap-6">
+<!-- Badge 1 -->
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 border-2 border-secondary">
+<div class="w-16 h-16 flex-shrink-0 bg-secondary-container rounded-full flex items-center justify-center border-2 border-secondary">
+<span class="material-symbols-outlined text-on-secondary-container filled-icon" style="font-size: 36px;">verified</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg">Accessibility Advocate</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Top 5% contributor this month</p>
+</div>
+</div>
+<!-- Badge 2 -->
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 border-2 border-outline-variant opacity-70 grayscale">
+<div class="w-16 h-16 flex-shrink-0 bg-surface-container-high rounded-full flex items-center justify-center border-2 border-outline">
+<span class="material-symbols-outlined text-outline" style="font-size: 36px;">map</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg">Urban Explorer</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Map 10 new accessible routes</p>
+</div>
+</div>
+<!-- Badge 3 -->
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 border-2 border-tertiary-fixed-dim">
+<div class="w-16 h-16 flex-shrink-0 bg-tertiary-fixed rounded-full flex items-center justify-center border-2 border-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant filled-icon" style="font-size: 36px;">forum</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg">Review Maestro</p>
+<p class="font-label-md text-label-md text-on-surface-variant">20 detailed reviews shared</p>
+</div>
+</div>
+<button class="w-full py-4 border-2 border-dashed border-outline text-on-surface-variant font-label-lg text-label-lg hover:border-primary hover:text-primary transition-all">View 12 Locked Badges</button>
+</div>
+<!-- Community Alert Box -->
+<div class="mt-stack-lg bg-tertiary-fixed border-2 border-on-tertiary-fixed-variant p-6 flex items-start gap-4">
+<span class="material-symbols-outlined text-primary shrink-0" style="font-size: 32px;">warning</span>
+<div>
+<h4 class="font-label-lg text-label-lg text-primary mb-1">Elevator Out of Service</h4>
+<p class="font-body-md text-body-md text-primary">Bridgeview Crossing North Elevator is reported down. Your recent route might be affected.</p>
+<button class="mt-4 bg-primary text-on-primary px-4 py-2 font-label-md text-label-md rounded">Update Route</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="mt-auto p-gutter border-t-2 border-outline-variant bg-surface-container-lowest text-center">
+<p class="font-label-md text-label-md text-on-surface-variant">PathSense © 2023. Radical inclusivity for every journey.</p>
+</footer>
+</main>
+<!-- Mobile Navigation (Shared Component Placeholder Logic) -->
+<nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-surface-container border-t border-outline-variant flex justify-around items-center py-3 px-gutter z-50">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-secondary">
+<span class="material-symbols-outlined filled-icon">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">campaign</span>
+<span class="text-[10px] font-bold">Alerts</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold">Settings</span>
+</button>
+</nav>
+<script>
+        // Simple micro-interaction for the accessibility toggles
+        document.querySelectorAll('input[type="checkbox"]').forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const parent = this.closest('.flex.items-center.justify-between');
+                if(this.checked) {
+                    parent.classList.remove('border-outline-variant');
+                    parent.classList.add('border-secondary');
+                    parent.querySelector('.material-symbols-outlined').classList.add('text-secondary');
+                } else {
+                    parent.classList.add('border-outline-variant');
+                    parent.classList.remove('border-secondary');
+                    parent.querySelector('.material-symbols-outlined').classList.remove('text-secondary');
+                }
+            });
+        });
+    </script>
+</body></html>

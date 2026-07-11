@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PathSense - Submit Community Report</title>
+<!-- Google Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#d8dadc",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-secondary-fixed": "#00201d",
+                    "inverse-primary": "#bec6e0",
+                    "primary": "#000000",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#6e3900",
+                    "secondary-fixed-dim": "#6bd8cb",
+                    "tertiary-container": "#2f1500",
+                    "surface-container-low": "#f2f4f6",
+                    "on-tertiary-container": "#c76c00",
+                    "primary-fixed": "#dae2fd",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#e6e8ea",
+                    "on-primary-fixed": "#131b2e",
+                    "on-secondary-fixed-variant": "#005049",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb77d",
+                    "tertiary-fixed": "#ffdcc3",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-variant": "#e0e3e5",
+                    "on-primary-container": "#7c839b",
+                    "on-surface-variant": "#45464d",
+                    "on-secondary": "#ffffff",
+                    "background": "#f7f9fb",
+                    "surface-container": "#eceef0",
+                    "surface-bright": "#f7f9fb",
+                    "surface-tint": "#565e74",
+                    "primary-container": "#131b2e",
+                    "on-background": "#191c1e",
+                    "surface-container-highest": "#e0e3e5",
+                    "outline": "#76777d",
+                    "on-error": "#ffffff",
+                    "on-secondary-container": "#006f66",
+                    "secondary-container": "#86f2e4",
+                    "surface": "#f7f9fb",
+                    "on-error-container": "#93000a",
+                    "secondary": "#006a61",
+                    "outline-variant": "#c6c6cd",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#2f1500",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#191c1e",
+                    "secondary-fixed": "#89f5e7",
+                    "tertiary": "#000000"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "1.5rem",
+                    "stack-sm": "0.75rem",
+                    "touch-target-min": "48px",
+                    "margin-desktop": "2.5rem",
+                    "margin-mobile": "1.25rem",
+                    "stack-lg": "3rem",
+                    "stack-md": "1.5rem"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Atkinson Hyperlegible Next"],
+                    "label-lg": ["Atkinson Hyperlegible Next"],
+                    "headline-lg": ["Atkinson Hyperlegible Next"],
+                    "headline-xl": ["Atkinson Hyperlegible Next"],
+                    "body-lg": ["Atkinson Hyperlegible Next"],
+                    "body-md": ["Atkinson Hyperlegible Next"],
+                    "label-md": ["Atkinson Hyperlegible Next"],
+                    "headline-md": ["Atkinson Hyperlegible Next"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "700"}],
+                    "label-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "700"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "800"}],
+                    "body-lg": ["20px", {"lineHeight": "30px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "body-md": ["18px", {"lineHeight": "28px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body {
+            font-family: 'Atkinson Hyperlegible Next', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #76777d; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- TopAppBar Shell -->
+<header class="flex justify-between items-center px-gutter py-4 w-full sticky top-0 z-50 bg-background dark:bg-background border-b-2 border-outline-variant dark:border-outline">
+<div class="flex items-center gap-4">
+<h1 class="font-headline-xl text-headline-xl text-primary dark:text-primary-fixed">PathSense</h1>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="font-headline-md text-headline-md text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container transition-colors px-4 py-2" href="#">Home</a>
+<a class="font-headline-md text-headline-md text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container transition-colors px-4 py-2" href="#">Profile</a>
+<a class="font-headline-md text-headline-md text-primary dark:text-secondary-fixed font-bold border-b-2 border-primary px-4 py-2" href="#">Community Reports</a>
+<a class="font-headline-md text-headline-md text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container transition-colors px-4 py-2" href="#">Settings</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="hidden lg:flex flex-col h-screen p-gutter gap-stack-md bg-surface-container-lowest dark:bg-surface-container-low h-full w-72 fixed left-0 top-0 border-r-2 border-outline-variant dark:border-outline pt-24">
+<div class="mb-8">
+<h2 class="font-headline-lg text-headline-lg text-primary dark:text-primary-fixed">PathSense</h2>
+<p class="font-label-lg text-label-lg text-on-surface-variant">Accessible Navigation</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-lg text-label-lg">Home</span>
+</a>
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-lg text-label-lg">Profile</span>
+</a>
+<a class="flex items-center gap-4 p-4 bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-full border-2 border-secondary" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-label-lg text-label-lg">Community Reports</span>
+</a>
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-lg text-label-lg">Settings</span>
+</a>
+</nav>
+<div class="mt-auto">
+<button class="w-full py-4 px-6 bg-secondary text-on-secondary font-bold rounded-xl hover:border-primary transition-all duration-200 border-2 border-transparent">
+                Give Review
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:pl-72 w-full">
+<div class="max-w-6xl mx-auto px-gutter py-stack-lg flex flex-col gap-stack-lg">
+<!-- Page Header & Alert -->
+<section class="flex flex-col gap-stack-sm">
+<h1 class="font-headline-xl text-headline-xl text-primary">Submit Community Report</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Help your neighbors by reporting accessibility barriers, safety hazards, or infrastructure issues in real-time.</p>
+<!-- Community Alert Banner -->
+<div class="flex items-center gap-4 bg-tertiary-fixed p-4 rounded-xl border-2 border-primary">
+<span class="material-symbols-outlined text-primary text-3xl">warning</span>
+<div>
+<p class="font-label-lg text-label-lg text-primary">Active Alert near you</p>
+<p class="font-body-md text-body-md text-on-tertiary-fixed-variant">Elevator at Central Station Out of Service until 8:00 PM tonight.</p>
+</div>
+</div>
+</section>
+<!-- Grid Layout for Report & Verification -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-stack-lg">
+<!-- Form Section -->
+<div class="xl:col-span-8 flex flex-col gap-stack-md">
+<div class="bg-surface-container-lowest border-2 border-outline p-6 md:p-8 rounded-xl">
+<form class="space-y-stack-md">
+<!-- Location Picker Placeholder -->
+<div class="space-y-2">
+<label class="font-label-lg text-label-lg block">Location of Issue</label>
+<div class="relative group">
+<div class="w-full h-64 bg-surface-dim rounded-xl overflow-hidden border-2 border-outline relative cursor-crosshair">
+<!-- Map Simulation -->
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A detailed, high-contrast map of a modern city intersection with clear street names and accessible path markings in a minimalist architectural style. The map uses a neutral palette of slates and whites with a deep navy marker pinpointing a specific sidewalk location. Sunlight casts soft shadows across the urban grid." data-location="London" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBz7Qkw-kfBJ9YDdrSYxFirljPieFolA80VJfk7AbUD932BvgtSaiSr9SgCuFamnvhEvgpLcrLk1lano5itIdgWGt1DWNzXo0yKn-_7YtMExwqUFL4xYnQnSi7jtp7pUvIiinnzvSnBIUBvlAhkh5G4FA1iZQNoiehjL776tzK9d2eDB3iWpFiCDll9iJ_WSWnbkRPormqytlagpZRVyKkNxcJjo462KYpgg4SU6mYCKhcZitJP9BqB')"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+<span class="material-symbols-outlined text-error text-4xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+<div class="absolute bottom-4 right-4 flex flex-col gap-2">
+<button class="bg-surface-bright p-3 rounded-lg border-2 border-outline shadow-sm hover:bg-surface-container transition-all" type="button">
+<span class="material-symbols-outlined">my_location</span>
+</button>
+<button class="bg-surface-bright p-3 rounded-lg border-2 border-outline shadow-sm hover:bg-surface-container transition-all" type="button">
+<span class="material-symbols-outlined">zoom_in</span>
+</button>
+</div>
+</div>
+<p class="text-label-md font-label-md text-on-surface-variant mt-2 italic">Tap map to refine location: 242 Baker Street, London</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- Type of Issue Dropdown -->
+<div class="space-y-2">
+<label class="font-label-lg text-label-lg block" for="issue-type">Type of Issue</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-bright border-2 border-outline rounded-lg py-4 px-4 pr-12 focus:border-secondary focus:ring-0 font-body-md text-body-md" id="issue-type">
+<option>Select an issue type...</option>
+<option>Roadblock / Construction</option>
+<option>Pothole / Uneven Surface</option>
+<option>Broken Elevator / Escalator</option>
+<option>Missing Curb Cut</option>
+<option>Faulty Crossing Signal</option>
+<option>Other</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Accessibility Rating -->
+<div class="space-y-2">
+<label class="font-label-lg text-label-lg block">Impact Severity</label>
+<div class="flex items-center gap-2 h-[58px]">
+<!-- Segmented Rating Bar -->
+<div class="flex gap-1 flex-1 h-3">
+<div class="flex-1 bg-primary rounded-sm"></div>
+<div class="flex-1 bg-primary rounded-sm"></div>
+<div class="flex-1 bg-primary rounded-sm"></div>
+<div class="flex-1 border-2 border-outline rounded-sm"></div>
+<div class="flex-1 border-2 border-outline rounded-sm"></div>
+</div>
+<span class="font-label-md text-label-md text-primary ml-2">Moderate (3/5)</span>
+</div>
+</div>
+</div>
+<!-- Description Box -->
+<div class="space-y-2">
+<label class="font-label-lg text-label-lg block" for="description">Detailed Description</label>
+<textarea class="w-full bg-surface-bright border-2 border-outline rounded-lg p-4 focus:border-secondary focus:ring-0 font-body-md text-body-md" id="description" placeholder="Provide details like the exact corner, specific nature of the blockage, etc." rows="4"></textarea>
+</div>
+<!-- Photo Upload Area -->
+<div class="space-y-2">
+<label class="font-label-lg text-label-lg block">Upload Photos</label>
+<div class="border-2 border-dashed border-outline-variant bg-surface-container rounded-xl p-8 flex flex-col items-center justify-center gap-4 hover:border-secondary transition-colors cursor-pointer group">
+<div class="w-16 h-16 bg-surface-bright rounded-full flex items-center justify-center border-2 border-outline group-hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-3xl">add_a_photo</span>
+</div>
+<div class="text-center">
+<p class="font-label-lg text-label-lg text-primary">Click or drag images to upload</p>
+<p class="font-label-md text-label-md text-on-surface-variant">PNG, JPG up to 10MB each</p>
+</div>
+</div>
+</div>
+<!-- Submit Button Container -->
+<div class="pt-4">
+<button class="w-full py-5 bg-secondary text-on-secondary font-headline-md text-headline-md rounded-xl hover:bg-on-secondary-container transition-all active:scale-95 border-2 border-transparent focus:border-primary" type="submit">
+                                    Submit Report
+                                </button>
+<p class="text-center font-label-md text-label-md text-on-surface-variant mt-4">By submitting, you agree to our Community Guidelines.</p>
+</div>
+</form>
+</div>
+</div>
+<!-- Verification & Nearby Reports Column -->
+<div class="xl:col-span-4 flex flex-col gap-stack-md">
+<div class="bg-surface-container-high p-6 rounded-xl border-2 border-outline">
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Verify Existing Reports</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Are these issues still present? Your verification helps keep our data fresh.</p>
+<div class="flex flex-col gap-4">
+<!-- Verification Card 1 -->
+<div class="bg-surface-container-lowest border-2 border-outline p-4 rounded-lg flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">construction</span>
+<span class="font-label-lg text-label-lg">Sidewalk Blocked</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">2h ago</span>
+</div>
+<p class="font-body-md text-body-md">Corner of 5th and Main. Construction scaffolding blocking wheelchair access.</p>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-surface-bright border-2 border-outline rounded-lg font-label-md text-label-md hover:bg-secondary-container hover:border-secondary transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">check_circle</span> Still there
+                                    </button>
+<button class="flex-1 py-2 bg-surface-bright border-2 border-outline rounded-lg font-label-md text-label-md hover:bg-error-container hover:border-error transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">cancel</span> Resolved
+                                    </button>
+</div>
+</div>
+<!-- Verification Card 2 -->
+<div class="bg-surface-container-lowest border-2 border-outline p-4 rounded-lg flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">elevator</span>
+<span class="font-label-lg text-label-lg">Elevator Offline</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">5h ago</span>
+</div>
+<p class="font-body-md text-body-md">Platform B elevator at West Station is unresponsive.</p>
+<div class="flex gap-2">
+<button class="flex-1 py-2 bg-surface-bright border-2 border-outline rounded-lg font-label-md text-label-md hover:bg-secondary-container hover:border-secondary transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">check_circle</span> Still there
+                                    </button>
+<button class="flex-1 py-2 bg-surface-bright border-2 border-outline rounded-lg font-label-md text-label-md hover:bg-error-container hover:border-error transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">cancel</span> Resolved
+                                    </button>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-3 font-label-lg text-label-lg text-secondary underline hover:text-on-secondary-container">
+                            View all nearby reports
+                        </button>
+</div>
+<!-- Helpful Tips Card -->
+<div class="bg-primary text-on-primary p-6 rounded-xl border-2 border-outline">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-secondary-fixed">lightbulb</span>
+<h3 class="font-headline-md text-headline-md">Reporting Tips</h3>
+</div>
+<ul class="space-y-4 font-body-md text-body-md">
+<li class="flex gap-3">
+<span class="font-bold text-secondary-fixed">01.</span>
+<span>Be specific about the location so repair crews can find it easily.</span>
+</li>
+<li class="flex gap-3">
+<span class="font-bold text-secondary-fixed">02.</span>
+<span>Photos of the barrier relative to surroundings are most helpful.</span>
+</li>
+<li class="flex gap-3">
+<span class="font-bold text-secondary-fixed">03.</span>
+<span>Mention if there is a safe alternative path available nearby.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-background border-t-2 border-outline-variant flex justify-around py-3 z-50">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">campaign</span>
+<span class="text-[10px] font-bold">Reports</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold">Settings</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction for the map marker
+        const mapContainer = document.querySelector('[data-location="London"]').parentElement;
+        mapContainer.addEventListener('click', (e) => {
+            const rect = mapContainer.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Create a ripple effect
+            const ripple = document.createElement('div');
+            ripple.className = 'absolute bg-secondary/30 rounded-full animate-ping pointer-events-none';
+            ripple.style.width = '40px';
+            ripple.style.height = '40px';
+            ripple.style.left = `${x - 20}px`;
+            ripple.style.top = `${y - 20}px`;
+            mapContainer.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 1000);
+        });
+
+        // Simple form validation feedback
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerText = 'Submitting...';
+            btn.classList.add('opacity-50');
+            
+            setTimeout(() => {
+                btn.innerText = 'Report Submitted!';
+                btn.classList.remove('bg-secondary');
+                btn.classList.add('bg-green-600');
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.remove('bg-green-600', 'opacity-50');
+                    btn.classList.add('bg-secondary');
+                    form.reset();
+                }, 2000);
+            }, 1500);
+        });
+    </script>
+</body></html>
