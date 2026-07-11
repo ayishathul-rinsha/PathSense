@@ -136,25 +136,25 @@
 <!-- SideNavBar (Desktop) -->
 <aside class="hidden lg:flex flex-col h-screen p-gutter gap-stack-md bg-surface-container-lowest border-r-2 border-outline-variant fixed left-0 top-0 w-72 z-50">
 <div class="flex flex-col gap-2">
-<h1 class="font-headline-lg text-headline-lg text-primary">PathSense</h1>
+<h1 class="font-headline-lg text-headline-lg text-primary"><a href="pathsense_accessibility_navigator.html" class="hover:opacity-80 transition-opacity">PathSense</a></h1>
 <p class="font-label-md text-label-md text-on-surface-variant">Accessible Navigation</p>
 </div>
 <nav class="flex flex-col gap-stack-sm mt-8">
-<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:border-primary transition-all duration-200 font-label-lg text-label-lg" href="#">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:border-primary transition-all duration-200 font-label-lg text-label-lg" href="pathsense_accessibility_navigator.html">
 <span class="material-symbols-outlined">home</span> Home
             </a>
-<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:border-primary transition-all duration-200 font-label-lg text-label-lg" href="#">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:border-primary transition-all duration-200 font-label-lg text-label-lg" href="pathsense_user_profile.html">
 <span class="material-symbols-outlined">person</span> Profile
             </a>
-<a class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-full border-2 border-secondary font-label-lg text-label-lg" href="#">
+<a class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-full border-2 border-secondary font-label-lg text-label-lg" href="pathsense_community_reports.html">
 <span class="material-symbols-outlined">campaign</span> Community Reports
             </a>
-<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:border-primary transition-all duration-200 font-label-lg text-label-lg" href="#">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high hover:border-primary transition-all duration-200 font-label-lg text-label-lg" href="pathsense_user_profile.html">
 <span class="material-symbols-outlined">settings</span> Settings
             </a>
 </nav>
 <div class="mt-auto">
-<button class="w-full py-4 bg-secondary text-on-secondary font-label-lg text-label-lg border-2 border-transparent hover:border-primary focus:outline-none focus:ring-4 focus:ring-secondary/30 transition-all rounded-lg">
+<button onclick="window.location.href='pathsense_give_a_review.html'" class="w-full py-4 bg-secondary text-on-secondary font-label-lg text-label-lg border-2 border-transparent hover:border-primary focus:outline-none focus:ring-4 focus:ring-secondary/30 transition-all rounded-lg">
                 Give Review
             </button>
 </div>
@@ -179,7 +179,7 @@
 <button class="p-3 hover:bg-surface-container transition-colors rounded-full active:opacity-80 active:scale-95">
 <span class="material-symbols-outlined text-primary">notifications</span>
 </button>
-<button class="p-3 hover:bg-surface-container transition-colors rounded-full active:opacity-80 active:scale-95">
+<button onclick="window.location.href='pathsense_user_profile.html'" class="p-3 hover:bg-surface-container transition-colors rounded-full active:opacity-80 active:scale-95">
 <span class="material-symbols-outlined text-primary">account_circle</span>
 </button>
 </div>
@@ -199,7 +199,7 @@
 <p class="font-body-md text-body-md text-on-secondary-container/80">Help others navigate safely.</p>
 </div>
 </div>
-<button class="px-6 py-3 bg-secondary text-on-secondary font-label-lg text-label-lg rounded-lg border-2 border-transparent hover:border-primary transition-all shadow-md">
+<button onclick="window.location.href='pathsense_sumbit_report.html'" class="px-6 py-3 bg-secondary text-on-secondary font-label-lg text-label-lg rounded-lg border-2 border-transparent hover:border-primary transition-all shadow-md">
                         Submit Report
                     </button>
 </div>
@@ -210,7 +210,7 @@
 <button class="px-4 py-2 border-2 border-outline text-on-surface-variant hover:bg-surface-container font-label-md text-label-md rounded-full whitespace-nowrap">Roadblocks</button>
 <button class="px-4 py-2 border-2 border-outline text-on-surface-variant hover:bg-surface-container font-label-md text-label-md rounded-full whitespace-nowrap">Potholes</button>
 </div>
-<div class="flex flex-col gap-stack-md">
+<div id="reportsContainer" class="flex flex-col gap-stack-md">
 <!-- High Severity Report -->
 <article class="report-card p-6 bg-surface-container-lowest border-2 border-error rounded-xl">
 <div class="flex justify-between items-start mb-4">
@@ -351,61 +351,132 @@
 </section>
 </div>
 <!-- Floating Action Button (Mobile) -->
-<button class="lg:hidden fixed bottom-24 right-6 w-16 h-16 bg-secondary text-on-secondary rounded-full shadow-2xl flex items-center justify-center z-50 border-4 border-white active:scale-90 transition-transform">
+<button onclick="window.location.href='pathsense_sumbit_report.html'" class="lg:hidden fixed bottom-24 right-6 w-16 h-16 bg-secondary text-on-secondary rounded-full shadow-2xl flex items-center justify-center z-50 border-4 border-white active:scale-90 transition-transform">
 <span class="material-symbols-outlined text-3xl">add_location_alt</span>
 </button>
 <!-- BottomNavBar (Mobile) -->
 <nav class="lg:hidden fixed bottom-0 left-0 right-0 h-20 bg-surface-container-lowest border-t-2 border-outline-variant flex justify-around items-center px-4 z-50">
-<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="pathsense_accessibility_navigator.html">
 <span class="material-symbols-outlined">home</span>
 <span class="text-[10px] font-bold">Home</span>
 </a>
-<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="pathsense_user_profile.html">
 <span class="material-symbols-outlined">person</span>
 <span class="text-[10px] font-bold">Profile</span>
 </a>
-<a class="flex flex-col items-center gap-1 text-secondary" href="#">
+<a class="flex flex-col items-center gap-1 text-secondary" href="pathsense_community_reports.html">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">campaign</span>
 <span class="text-[10px] font-bold">Reports</span>
 </a>
-<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="pathsense_user_profile.html">
 <span class="material-symbols-outlined">settings</span>
 <span class="text-[10px] font-bold">Settings</span>
 </a>
 </nav>
 </main>
 <script>
-        // Micro-interaction: Update Verify Button
-        document.querySelectorAll('.report-card button').forEach(button => {
-            if (button.textContent.includes('Verify')) {
-                button.addEventListener('click', function() {
-                    const span = this.querySelector('span:last-child');
-                    const icon = this.querySelector('.material-symbols-outlined');
-                    const currentCount = parseInt(span.textContent.match(/\d+/)[0]);
+        // Fetch and render community reports dynamically
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch('/api/reports')
+                .then(res => res.json())
+                .then(reports => {
+                    const container = document.getElementById('reportsContainer');
+                    if (!container || !reports || reports.length === 0) return;
                     
-                    if (this.dataset.active === "true") {
-                        span.textContent = `Verify (${currentCount - 1})`;
-                        this.classList.remove('bg-secondary-container', 'border-secondary');
-                        icon.style.fontVariationSettings = "'FILL' 0";
-                        this.dataset.active = "false";
-                    } else {
-                        span.textContent = `Verify (${currentCount + 1})`;
-                        this.classList.add('bg-secondary-container', 'border-secondary');
-                        icon.style.fontVariationSettings = "'FILL' 1";
-                        this.dataset.active = "true";
-                    }
-                });
-            }
+                    let htmlContent = '';
+                    reports.forEach(report => {
+                        let severityClass = 'border-outline-variant';
+                        let severityBadge = 'bg-surface-variant text-on-surface-variant';
+                        let icon = 'warning';
+                        let iconBg = 'bg-surface-container-high border-outline/20';
+
+                        if (report.issue_type === 'High Severity') {
+                            severityClass = 'border-error';
+                            severityBadge = 'bg-error-container text-on-error-container';
+                            icon = 'location_disabled';
+                            iconBg = 'bg-error-container/30 border-error/20';
+                        } else if (report.issue_type === 'Medium Severity') {
+                            severityClass = 'border-outline';
+                            severityBadge = 'bg-tertiary-fixed text-on-tertiary-fixed';
+                            icon = 'construction';
+                            iconBg = 'bg-surface-container-high border-outline/20';
+                        }
+                        
+                        if (report.title.toLowerCase().includes('elevator')) {
+                            icon = 'location_disabled';
+                        } else if (report.title.toLowerCase().includes('sidewalk') || report.title.toLowerCase().includes('road')) {
+                            icon = 'construction';
+                        }
+
+                        htmlContent += `
+                            <article class="report-card p-6 bg-surface-container-lowest border-2 ${severityClass} rounded-xl">
+                                <div class="flex justify-between items-start mb-4">
+                                    <div class="flex items-center gap-3">
+                                        <span class="px-3 py-1 ${severityBadge} font-label-md text-label-md rounded-lg">${report.issue_type}</span>
+                                        <span class="font-label-md text-label-md text-on-surface-variant">${report.time_ago}</span>
+                                    </div>
+                                    <button class="p-2 hover:bg-surface-container rounded-full"><span class="material-symbols-outlined">more_vert</span></button>
+                                </div>
+                                <div class="flex gap-4 mb-4">
+                                    <div class="w-16 h-16 ${iconBg} flex items-center justify-center rounded-lg border-2 flex-shrink-0">
+                                        <span class="material-symbols-outlined text-error text-3xl">${icon}</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-headline-md text-headline-md text-on-surface mb-1">${report.title}</h3>
+                                        <p class="font-body-md text-body-md text-on-surface-variant mb-4">${report.description}</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between border-t-2 border-outline-variant pt-4">
+                                    <div class="flex gap-4">
+                                        <button class="flex items-center gap-2 px-4 py-2 border-2 border-outline rounded-lg hover:border-secondary transition-colors group" onclick="toggleVerify(this)">
+                                            <span class="material-symbols-outlined">thumb_up</span>
+                                            <span class="font-label-md text-label-md">Verify (${report.upvotes || 0})</span>
+                                        </button>
+                                        <button class="flex items-center gap-2 px-4 py-2 border-2 border-outline rounded-lg hover:border-error transition-colors">
+                                            <span class="material-symbols-outlined">flag</span>
+                                            <span class="font-label-md text-label-md">Report Error</span>
+                                        </button>
+                                    </div>
+                                    <span class="flex items-center gap-1 font-label-md text-label-md text-on-surface-variant">
+                                        <span class="material-symbols-outlined text-lg">map</span> ${report.distance || '0.5 mi away'}
+                                    </span>
+                                </div>
+                            </article>
+                        `;
+                    });
+                    container.innerHTML = htmlContent;
+                })
+                .catch(err => console.error(err));
         });
+
+        function toggleVerify(btn) {
+            const span = btn.querySelector('span:last-child');
+            const icon = btn.querySelector('.material-symbols-outlined');
+            const currentCount = parseInt(span.textContent.match(/\d+/)[0]);
+            
+            if (btn.dataset.active === "true") {
+                span.textContent = `Verify (${currentCount - 1})`;
+                btn.classList.remove('bg-secondary-container', 'border-secondary');
+                icon.style.fontVariationSettings = "'FILL' 0";
+                btn.dataset.active = "false";
+            } else {
+                span.textContent = `Verify (${currentCount + 1})`;
+                btn.classList.add('bg-secondary-container', 'border-secondary');
+                icon.style.fontVariationSettings = "'FILL' 1";
+                btn.dataset.active = "true";
+            }
+        }
 
         // Search highlight effect
         const searchInput = document.querySelector('input[type="text"]');
-        searchInput.addEventListener('focus', () => {
-            searchInput.parentElement.classList.add('scale-105');
-            searchInput.parentElement.classList.add('transition-transform');
-        });
-        searchInput.addEventListener('blur', () => {
-            searchInput.parentElement.classList.remove('scale-105');
-        });
+        if (searchInput) {
+            searchInput.addEventListener('focus', () => {
+                searchInput.parentElement.classList.add('scale-105');
+                searchInput.parentElement.classList.add('transition-transform');
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.parentElement.classList.remove('scale-105');
+            });
+        }
     </script>
 </body></html>

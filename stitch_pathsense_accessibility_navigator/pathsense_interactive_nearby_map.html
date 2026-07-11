@@ -192,21 +192,21 @@
 <!-- Top Navigation Bar -->
 <header class="flex justify-between items-center px-gutter py-4 w-full sticky top-0 z-50 bg-background border-b-2 border-outline-variant font-headline-md text-headline-md">
 <div class="flex items-center gap-4">
-<span class="font-headline-xl text-headline-xl text-primary">PathSense</span>
+<span class="font-headline-xl text-headline-xl text-primary"><a href="pathsense_accessibility_navigator.html" class="hover:opacity-80 transition-opacity">PathSense</a></span>
 </div>
 <div class="hidden md:flex items-center gap-stack-md">
 <nav class="flex gap-6">
-<a class="text-on-surface-variant hover:bg-surface-container transition-colors px-2 py-1" href="#">Home</a>
-<a class="text-primary font-bold border-b-2 border-primary px-2 py-1" href="#">Explore</a>
-<a class="text-on-surface-variant hover:bg-surface-container transition-colors px-2 py-1" href="#">Reports</a>
+<a class="text-on-surface-variant hover:bg-surface-container transition-colors px-2 py-1" href="pathsense_accessibility_navigator.html">Home</a>
+<a class="text-primary font-bold border-b-2 border-primary px-2 py-1" href="pathsense_interactive_nearby_map.html">Explore</a>
+<a class="text-on-surface-variant hover:bg-surface-container transition-colors px-2 py-1" href="pathsense_community_reports.html">Reports</a>
 </nav>
 <div class="flex items-center gap-2">
 <button class="material-symbols-outlined p-2 rounded-full hover:bg-surface-container transition-colors">notifications</button>
-<button class="material-symbols-outlined p-2 rounded-full hover:bg-surface-container transition-colors">account_circle</button>
+<button onclick="window.location.href='pathsense_user_profile.html'" class="material-symbols-outlined p-2 rounded-full hover:bg-surface-container transition-colors">account_circle</button>
 </div>
 </div>
 </header>
-<main class="flex h-[calc(100vh-84px)] overflow-hidden">
+<main class="flex h-[calc(100vh-84px)] overflow-hidden lg:ml-72">
 <!-- Sidebar: Discovery List -->
 <aside class="w-full md:w-[450px] lg:w-[500px] h-full flex flex-col bg-surface-container-lowest border-r-2 border-outline-variant z-40">
 <!-- Filter Section -->
@@ -286,7 +286,7 @@
 <span class="text-sm font-bold">4/5</span>
 </div>
 </div>
-<button class="w-full py-4 bg-secondary text-on-secondary font-bold rounded-lg border-2 border-transparent hover:border-primary active:scale-95 transition-all flex justify-center items-center gap-2">
+<button onclick="event.stopPropagation(); window.location.href='pathsense_location_details.html?place_id=central_library'" class="w-full py-4 bg-secondary text-on-secondary font-bold rounded-lg border-2 border-transparent hover:border-primary active:scale-95 transition-all flex justify-center items-center gap-2">
 <span>View Details</span>
 <span class="material-symbols-outlined">arrow_forward</span>
 </button>
@@ -328,7 +328,7 @@
 <span class="text-sm font-bold">5/5</span>
 </div>
 </div>
-<button class="w-full py-4 bg-secondary text-on-secondary font-bold rounded-lg border-2 border-transparent hover:border-primary active:scale-95 transition-all flex justify-center items-center gap-2">
+<button onclick="event.stopPropagation(); window.location.href='pathsense_location_details.html?place_id=modern_brew'" class="w-full py-4 bg-secondary text-on-secondary font-bold rounded-lg border-2 border-transparent hover:border-primary active:scale-95 transition-all flex justify-center items-center gap-2">
 <span>View Details</span>
 <span class="material-symbols-outlined">arrow_forward</span>
 </button>
@@ -359,7 +359,7 @@
 <span class="text-sm font-bold">4/5</span>
 </div>
 </div>
-<button class="w-full py-4 bg-secondary text-on-secondary font-bold rounded-lg border-2 border-transparent hover:border-primary active:scale-95 transition-all flex justify-center items-center gap-2">
+<button onclick="event.stopPropagation(); window.location.href='pathsense_location_details.html?place_id=westside_plaza'" class="w-full py-4 bg-secondary text-on-secondary font-bold rounded-lg border-2 border-transparent hover:border-primary active:scale-95 transition-all flex justify-center items-center gap-2">
 <span>View Details</span>
 <span class="material-symbols-outlined">arrow_forward</span>
 </button>
@@ -391,29 +391,29 @@
 <!-- Side Navigation Bar (Hidden on Mobile) -->
 <nav class="hidden lg:flex flex-col h-screen p-gutter gap-stack-md bg-surface-container-lowest border-r-2 border-outline-variant w-72 fixed left-0 top-0 z-[60]">
 <div class="mb-stack-lg">
-<span class="font-headline-lg text-headline-lg text-primary">PathSense</span>
+<a href="pathsense_accessibility_navigator.html" class="font-headline-lg text-headline-lg text-primary hover:opacity-80 transition-opacity">PathSense</a>
 <p class="text-on-surface-variant font-label-md">Accessible Navigation</p>
 </div>
 <div class="flex flex-col gap-2">
-<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-xl border-2 border-transparent" href="#">
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-xl border-2 border-transparent" href="pathsense_accessibility_navigator.html">
 <span class="material-symbols-outlined">home</span>
 <span class="font-label-lg">Home</span>
 </a>
-<a class="flex items-center gap-4 p-4 bg-secondary-container text-on-secondary-container rounded-full border-2 border-secondary font-label-lg active:scale-[0.98] transition-transform" href="#">
+<a class="flex items-center gap-4 p-4 bg-secondary-container text-on-secondary-container rounded-full border-2 border-secondary font-label-lg active:scale-[0.98] transition-transform" href="pathsense_interactive_nearby_map.html">
 <span class="material-symbols-outlined">explore</span>
 <span class="font-label-lg">Discovery</span>
 </a>
-<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-xl border-2 border-transparent" href="#">
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-xl border-2 border-transparent" href="pathsense_community_reports.html">
 <span class="material-symbols-outlined">campaign</span>
 <span class="font-label-lg">Community Reports</span>
 </a>
-<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-xl border-2 border-transparent" href="#">
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-surface-container-high transition-all rounded-xl border-2 border-transparent" href="pathsense_user_profile.html">
 <span class="material-symbols-outlined">settings</span>
 <span class="font-label-lg">Settings</span>
 </a>
 </div>
 <div class="mt-auto">
-<button class="w-full py-4 bg-primary text-on-primary font-bold rounded-xl border-2 border-transparent hover:opacity-90 active:scale-95 transition-all">
+<button onclick="window.location.href='pathsense_give_a_review.html'" class="w-full py-4 bg-primary text-on-primary font-bold rounded-xl border-2 border-transparent hover:opacity-90 active:scale-95 transition-all">
                 Give Review
             </button>
 </div>
@@ -438,66 +438,102 @@
         position: 'topright'
     }).addTo(map);
 
-    // Data for markers
-    const locations = [
-        {
-            name: "Central Public Library",
-            coords: [41.8841, -87.6328],
-            icon: "accessible",
-            colorClass: "marker-primary",
-            match: "98%"
-        },
-        {
-            name: "Modern Brew Coffee",
-            coords: [41.8755, -87.6244],
-            icon: "coffee",
-            colorClass: "marker-secondary",
-            match: "72%"
-        },
-        {
-            name: "Westside Plaza",
-            coords: [41.8680, -87.6355],
-            icon: "shopping_bag",
-            colorClass: "marker-primary",
-            match: "91%"
-        }
-    ];
-
-    const markers = [];
-
-    // Create custom markers
-    locations.forEach((loc, index) => {
-        const customIcon = L.divIcon({
-            html: `<div class="custom-map-marker w-10 h-10 ${loc.colorClass}">
-                    <span class="material-symbols-outlined text-[24px]">${loc.icon}</span>
-                   </div>`,
-            className: '',
-            iconSize: [40, 40],
-            iconAnchor: [20, 40]
-        });
-
-        const marker = L.marker(loc.coords, { icon: customIcon }).addTo(map);
-        
-        marker.bindPopup(`
-            <div class="text-primary">
-                <p class="font-bold text-sm">${loc.name}</p>
-                <p class="text-xs text-on-surface-variant font-bold uppercase tracking-wider mt-1">${loc.match} Match</p>
-            </div>
-        `, { closeButton: false, offset: [0, -35] });
-        
-        markers.push(marker);
-    });
+    let markers = [];
 
     // Helper functions for interaction
-    function focusMarker(index) {
+    window.focusMarker = function(index) {
         const marker = markers[index];
-        map.flyTo(marker.getLatLng(), 15, { duration: 1.5 });
-        marker.openPopup();
+        if (marker) {
+            map.flyTo(marker.getLatLng(), 15, { duration: 1.5 });
+            marker.openPopup();
+        }
     }
 
-    function recenterMap() {
+    window.recenterMap = function() {
         map.flyTo(chicagoCenter, 14);
     }
+
+    // Recenter map controls hook
+    const recButton = document.querySelector('.material-symbols-outlined[textContent="my_location"]')?.closest('button');
+    if (recButton) {
+        recButton.addEventListener('click', recenterMap);
+    }
+
+    // Fetch and render places with dynamic match score popups
+    fetch('/api/places')
+        .then(res => res.json())
+        .then(places => {
+            // Update sidebar card badges dynamically
+            places.forEach(place => {
+                const cards = document.querySelectorAll('.flex-1.overflow-y-auto > div');
+                cards.forEach(card => {
+                    const heading = card.querySelector('h3');
+                    if (heading && heading.textContent.trim().toLowerCase().includes(place.name.toLowerCase().substring(0, 10))) {
+                        const badge = card.querySelector('.text-on-secondary-container, .text-on-surface-variant, .font-bold.text-lg');
+                        if (badge) {
+                            badge.textContent = `${place.score}%`;
+                            if (place.score >= 85) {
+                                badge.className = "bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-bold text-lg";
+                                card.classList.add('border-primary');
+                                card.classList.remove('border-outline-variant');
+                            } else {
+                                badge.className = "bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full font-bold text-lg";
+                                card.classList.remove('border-primary');
+                                card.classList.add('border-outline-variant');
+                            }
+                        }
+                    }
+                });
+            });
+
+            // Add markers with scores calculated from user profile
+            const locations = [
+                {
+                    name: "Central Public Library",
+                    coords: [41.8841, -87.6328],
+                    icon: "accessible",
+                    colorClass: "marker-primary"
+                },
+                {
+                    name: "Modern Brew Coffee",
+                    coords: [41.8755, -87.6244],
+                    icon: "coffee",
+                    colorClass: "marker-secondary"
+                },
+                {
+                    name: "Westside Plaza",
+                    coords: [41.8680, -87.6355],
+                    icon: "shopping_bag",
+                    colorClass: "marker-primary"
+                }
+            ];
+
+            locations.forEach((loc, index) => {
+                const matchingPlace = places.find(p => p.name.toLowerCase().includes(loc.name.toLowerCase().substring(0, 5)));
+                const matchScore = matchingPlace ? matchingPlace.score : 90;
+
+                const customIcon = L.divIcon({
+                    html: `<div class="custom-map-marker w-10 h-10 ${loc.colorClass}">
+                            <span class="material-symbols-outlined text-[24px]">${loc.icon}</span>
+                           </div>`,
+                    className: '',
+                    iconSize: [40, 40],
+                    iconAnchor: [20, 40]
+                });
+
+                const marker = L.marker(loc.coords, { icon: customIcon }).addTo(map);
+                
+                marker.bindPopup(`
+                    <div class="text-primary">
+                        <p class="font-bold text-sm">${loc.name}</p>
+                        <p class="text-xs text-on-surface-variant font-bold uppercase tracking-wider mt-1">${matchScore}% Match</p>
+                    </div>
+                `, { closeButton: false, offset: [0, -35] });
+                
+                markers.push(marker);
+            });
+        })
+        .catch(err => console.error('Error fetching places for map:', err));
 
     // Search bar interaction preservation
     const searchInput = document.querySelector('input[type="text"]');

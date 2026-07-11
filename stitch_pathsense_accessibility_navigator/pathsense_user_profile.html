@@ -132,33 +132,33 @@
 <!-- SideNavBar (Shared Component) -->
 <nav class="hidden lg:flex flex-col h-screen p-gutter gap-stack-md bg-surface-container-lowest border-r-2 border-outline-variant w-72 fixed left-0 top-0 z-40">
 <div class="mb-stack-lg">
-<h1 class="font-headline-lg text-headline-lg text-primary">PathSense</h1>
+<h1 class="font-headline-lg text-headline-lg text-primary"><a href="pathsense_accessibility_navigator.html" class="hover:opacity-80 transition-opacity">PathSense</a></h1>
 <p class="font-label-md text-label-md text-on-surface-variant">Accessible Navigation</p>
 </div>
 <div class="flex flex-col gap-2">
 <!-- Home -->
-<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 font-label-lg text-label-lg rounded-full" href="#">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 font-label-lg text-label-lg rounded-full" href="pathsense_accessibility_navigator.html">
 <span class="material-symbols-outlined">home</span>
 <span>Home</span>
 </a>
 <!-- Profile (ACTIVE) -->
-<a class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-full border-2 border-secondary font-label-lg text-label-lg active:scale-[0.98] transition-transform" href="#">
+<a class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-full border-2 border-secondary font-label-lg text-label-lg active:scale-[0.98] transition-transform" href="pathsense_user_profile.html">
 <span class="material-symbols-outlined filled-icon" style="font-variation-settings: 'FILL' 1;">person</span>
 <span>Profile</span>
 </a>
 <!-- Community Reports -->
-<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 font-label-lg text-label-lg rounded-full" href="#">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 font-label-lg text-label-lg rounded-full" href="pathsense_community_reports.html">
 <span class="material-symbols-outlined">campaign</span>
 <span>Community Reports</span>
 </a>
 <!-- Settings -->
-<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 font-label-lg text-label-lg rounded-full" href="#">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 font-label-lg text-label-lg rounded-full" href="pathsense_user_profile.html">
 <span class="material-symbols-outlined">settings</span>
 <span>Settings</span>
 </a>
 </div>
 <div class="mt-auto pt-stack-md border-t border-outline-variant">
-<button class="w-full flex items-center justify-center gap-2 bg-secondary text-on-secondary py-3 px-6 rounded font-label-lg text-label-lg font-bold border-2 border-transparent hover:border-primary transition-all duration-200">
+<button onclick="window.location.href='pathsense_give_a_review.html'" class="w-full flex items-center justify-center gap-2 bg-secondary text-on-secondary py-3 px-6 rounded font-label-lg text-label-lg font-bold border-2 border-transparent hover:border-primary transition-all duration-200">
                 Give Review
             </button>
 </div>
@@ -429,38 +429,107 @@
 </main>
 <!-- Mobile Navigation (Shared Component Placeholder Logic) -->
 <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-surface-container border-t border-outline-variant flex justify-around items-center py-3 px-gutter z-50">
-<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<button onclick="window.location.href='pathsense_accessibility_navigator.html'" class="flex flex-col items-center gap-1 text-on-surface-variant">
 <span class="material-symbols-outlined">home</span>
 <span class="text-[10px] font-bold">Home</span>
 </button>
-<button class="flex flex-col items-center gap-1 text-secondary">
+<button onclick="window.location.href='pathsense_user_profile.html'" class="flex flex-col items-center gap-1 text-secondary">
 <span class="material-symbols-outlined filled-icon">person</span>
 <span class="text-[10px] font-bold">Profile</span>
 </button>
-<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<button onclick="window.location.href='pathsense_community_reports.html'" class="flex flex-col items-center gap-1 text-on-surface-variant">
 <span class="material-symbols-outlined">campaign</span>
 <span class="text-[10px] font-bold">Alerts</span>
 </button>
-<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<button onclick="window.location.href='pathsense_user_profile.html'" class="flex flex-col items-center gap-1 text-on-surface-variant">
 <span class="material-symbols-outlined">settings</span>
 <span class="text-[10px] font-bold">Settings</span>
 </button>
 </nav>
 <script>
-        // Simple micro-interaction for the accessibility toggles
-        document.querySelectorAll('input[type="checkbox"]').forEach(toggle => {
-            toggle.addEventListener('change', function() {
-                const parent = this.closest('.flex.items-center.justify-between');
-                if(this.checked) {
-                    parent.classList.remove('border-outline-variant');
-                    parent.classList.add('border-secondary');
-                    parent.querySelector('.material-symbols-outlined').classList.add('text-secondary');
-                } else {
-                    parent.classList.add('border-outline-variant');
-                    parent.classList.remove('border-secondary');
-                    parent.querySelector('.material-symbols-outlined').classList.remove('text-secondary');
+        // Toggles mapping matching server's categories: 'mobility', 'visual', 'cognitive' (neurodiversity / hearing / walker, etc.)
+        const toggleMap = {
+            'mobility': 0,      // Wheelchair
+            'visual': 1,        // Low Vision
+            'hearing': 2,       // Hearing Assistance
+            'cognitive': 3,     // Neurodiversity
+            'walker': 4         // Limited Mobility
+        };
+        const revToggleMap = ['mobility', 'visual', 'hearing', 'cognitive', 'walker'];
+
+        window.addEventListener('DOMContentLoaded', () => {
+            fetch('/api/profile')
+                .then(res => res.json())
+                .then(data => {
+                    const categories = data.categories || [];
+                    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                    
+                    // Reset all
+                    checkboxes.forEach((cb, idx) => {
+                        cb.checked = false;
+                        updateToggleStyle(cb, false);
+                    });
+
+                    // Set active ones
+                    categories.forEach(cat => {
+                        const idx = toggleMap[cat];
+                        if (idx !== undefined && checkboxes[idx]) {
+                            checkboxes[idx].checked = true;
+                            updateToggleStyle(checkboxes[idx], true);
+                        }
+                    });
+                })
+                .catch(err => console.error(err));
+        });
+
+        function updateToggleStyle(checkbox, isChecked) {
+            const parent = checkbox.closest('.flex.items-center.justify-between');
+            if (!parent) return;
+            const icon = parent.querySelector('.material-symbols-outlined');
+            if (isChecked) {
+                parent.classList.remove('border-outline-variant');
+                parent.classList.add('border-secondary');
+                if (icon) {
+                    icon.classList.remove('text-primary');
+                    icon.classList.add('text-secondary');
                 }
+            } else {
+                parent.classList.add('border-outline-variant');
+                parent.classList.remove('border-secondary');
+                if (icon) {
+                    icon.classList.remove('text-secondary');
+                    icon.classList.add('text-primary');
+                }
+            }
+        }
+
+        // Listen to changes and save to backend
+        document.querySelectorAll('input[type="checkbox"]').forEach((cb, idx) => {
+            cb.addEventListener('change', function() {
+                updateToggleStyle(this, this.checked);
+                saveProfile();
             });
         });
+
+        function saveProfile() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const activeCategories = [];
+            checkboxes.forEach((cb, idx) => {
+                if (cb.checked) {
+                    activeCategories.push(revToggleMap[idx]);
+                }
+            });
+
+            fetch('/api/profile', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ categories: activeCategories })
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log('Profile saved:', data);
+            })
+            .catch(err => console.error(err));
+        }
     </script>
 </body></html>

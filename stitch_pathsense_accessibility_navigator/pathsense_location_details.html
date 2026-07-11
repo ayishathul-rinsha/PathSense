@@ -137,7 +137,7 @@
 <button class="w-touch-target-min h-touch-target-min flex items-center justify-center hover:bg-surface-container rounded-full transition-colors active:scale-95">
 <span class="material-symbols-outlined">notifications</span>
 </button>
-<button class="w-touch-target-min h-touch-target-min flex items-center justify-center hover:bg-surface-container rounded-full transition-colors active:scale-95">
+<button onclick="window.location.href='pathsense_user_profile.html'" class="w-touch-target-min h-touch-target-min flex items-center justify-center hover:bg-surface-container rounded-full transition-colors active:scale-95">
 <span class="material-symbols-outlined">account_circle</span>
 </button>
 </div>
@@ -149,26 +149,26 @@
 <h2 class="font-headline-lg text-headline-lg text-primary">PathSense</h2>
 <p class="font-label-md text-label-md text-on-surface-variant">Accessible Navigation</p>
 </div>
-<nav class="flex flex-col gap-2">
-<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all border-2 border-transparent" href="#">
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all border-2 border-transparent" href="pathsense_accessibility_navigator.html">
 <span class="material-symbols-outlined">home</span>
 <span class="font-label-lg text-label-lg">Home</span>
 </a>
-<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all border-2 border-transparent" href="#">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all border-2 border-transparent" href="pathsense_user_profile.html">
 <span class="material-symbols-outlined">person</span>
 <span class="font-label-lg text-label-lg">Profile</span>
 </a>
-<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all border-2 border-transparent" href="#">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all border-2 border-transparent" href="pathsense_community_reports.html">
 <span class="material-symbols-outlined">campaign</span>
 <span class="font-label-lg text-label-lg">Community Reports</span>
 </a>
-<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all border-2 border-transparent" href="#">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all border-2 border-transparent" href="pathsense_user_profile.html">
 <span class="material-symbols-outlined">settings</span>
 <span class="font-label-lg text-label-lg">Settings</span>
 </a>
-</nav>
+</div>
 <div class="mt-auto">
-<button class="w-full bg-secondary text-on-secondary font-label-lg text-label-lg py-4 border-2 border-primary hover:outline hover:outline-3 hover:outline-primary transition-all">
+<button onclick="window.location.href='pathsense_give_a_review.html?place_id=' + currentPlaceId" class="w-full bg-secondary text-on-secondary font-label-lg text-label-lg py-4 border-2 border-primary hover:outline hover:outline-3 hover:outline-primary transition-all">
                     Give Review
                 </button>
 </div>
@@ -181,8 +181,8 @@
 <div class="lg:col-span-8 h-[400px] relative border-2 border-primary overflow-hidden">
 <div class="w-full h-full bg-cover bg-center transform hover:scale-105 transition-transform duration-700" data-alt="A grand architectural view of the Central Library facade, featuring high-contrast glass and steel elements. The lighting is bright and crisp, emphasizing the wide, step-free entrance and clear signage. The photograph is shot from a low angle to convey authority and reliability, with a clean, modern aesthetic in a light-mode color palette." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDQBpHdYBAJkQJ8Fdl1BNRlWgT2TQ0I0qEUAiF-AXgIqEGrkAkCWcXMwCQB0R7JCQ4ZFJ26WN93khCo189EoD19HB1GJT5Q6Y7ADWhrVJa0aywfWppHpFw4j4cpzDADOKZFHiaqz-TH--X7_MM0kOFyQZKMX8rF5ifIvVIIvpp7FvBgzCPPuB_1d9HAuC0Y5euyH8028SRdktdJ3RKSBCukrgVlx-I6zBNJymJIBJ1NzhOSJlzdwEms')"></div>
 <div class="absolute bottom-6 left-6 bg-surface-container-lowest border-2 border-primary p-4 max-w-sm">
-<h2 class="font-headline-xl text-headline-xl mb-1">Central Library</h2>
-<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
+<h2 id="placeName" class="font-headline-xl text-headline-xl mb-1">Central Library</h2>
+<p id="placeMeta" class="font-body-md text-body-md text-on-surface-variant flex items-center gap-2">
 <span class="material-symbols-outlined text-sm">location_on</span>
                             200 Main St, Downtown Metropolitan
                         </p>
@@ -207,7 +207,7 @@
 <span class="material-symbols-outlined mb-1 group-active:scale-90 transition-transform">bookmark</span>
 <span class="font-label-md text-label-md">Save</span>
 </button>
-<button class="flex flex-col items-center justify-center p-4 bg-secondary text-on-secondary border-2 border-primary hover:outline hover:outline-3 hover:outline-primary transition-all group">
+<button onclick="window.location.href='pathsense_give_a_review.html?place_id=' + currentPlaceId" class="flex flex-col items-center justify-center p-4 bg-secondary text-on-secondary border-2 border-primary hover:outline hover:outline-3 hover:outline-primary transition-all group">
 <span class="material-symbols-outlined mb-1 group-active:scale-90 transition-transform">rate_review</span>
 <span class="font-label-md text-label-md">Review</span>
 </button>
@@ -221,7 +221,7 @@
 <p class="font-label-lg text-label-lg text-primary">Elevator Out of Service</p>
 <p class="font-body-md text-body-md text-on-tertiary-fixed-variant">North Wing elevator is undergoing maintenance until 4 PM. Use East Wing as alternative.</p>
 </div>
-<button class="bg-primary text-on-primary px-6 py-2 font-label-md text-label-md border-2 border-primary hover:opacity-90">
+<button onclick="window.location.href='pathsense_community_reports.html'" class="bg-primary text-on-primary px-6 py-2 font-label-md text-label-md border-2 border-primary hover:opacity-90">
                     View Reports
                 </button>
 </div>
@@ -419,24 +419,78 @@
 </div>
 <!-- BottomNavBar (Mobile Only) -->
 <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-surface-container-lowest border-t-0 flex justify-around items-center py-2 px-gutter z-50">
-<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant" href="#">
+<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant" href="pathsense_accessibility_navigator.html">
 <span class="material-symbols-outlined">home</span>
 <span class="font-label-md text-label-md">Home</span>
 </a>
-<a class="flex flex-col items-center gap-1 p-2 bg-secondary-container text-on-secondary-container rounded-full border-2 border-secondary px-4" href="#">
+<a class="flex flex-col items-center gap-1 p-2 bg-secondary-container text-on-secondary-container rounded-full border-2 border-secondary px-4" href="pathsense_interactive_nearby_map.html">
 <span class="material-symbols-outlined">location_on</span>
 <span class="font-label-md text-label-md">Explore</span>
 </a>
-<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant" href="#">
+<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant" href="pathsense_community_reports.html">
 <span class="material-symbols-outlined">campaign</span>
 <span class="font-label-md text-label-md">Alerts</span>
 </a>
-<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant" href="#">
+<a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant" href="pathsense_user_profile.html">
 <span class="material-symbols-outlined">person</span>
 <span class="font-label-md text-label-md">Profile</span>
 </a>
 </nav>
 <script>
+        let currentPlaceId = 'central_library';
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('place_id')) {
+            currentPlaceId = urlParams.get('place_id');
+        }
+
+        // Fetch place details from API
+        fetch(`/api/places/${currentPlaceId}`)
+            .then(res => res.json())
+            .then(place => {
+                if (!place) return;
+                
+                // Update place name and Match Score Badge
+                const titleHeading = document.getElementById('placeName');
+                if (titleHeading) {
+                    titleHeading.innerHTML = `${place.name} <span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-bold text-sm ml-3">${place.score}% Match</span>`;
+                }
+
+                // Update category, distance and address
+                const metaText = document.getElementById('placeMeta');
+                if (metaText) {
+                    metaText.innerHTML = `<span class="material-symbols-outlined text-sm">location_on</span> ${place.distance} away • ${place.category} • ${place.address || 'Chicago, IL'}`;
+                }
+
+                // Update overall score text
+                const scoreDiv = document.querySelector('.text-\\[80px\\]');
+                if (scoreDiv) {
+                    scoreDiv.textContent = place.rating.toFixed(1);
+                }
+
+                // Update rating segments matching features
+                // Wheelchair
+                updateSegments(document.querySelectorAll('.border-2.border-outline:nth-of-type(1) .rating-segment'), place.features.step_free ? 5 : 1);
+                
+                // Vision
+                updateSegments(document.querySelectorAll('.border-2.border-outline:nth-of-type(2) .rating-segment'), place.features.braille_signage ? 4 : 1);
+
+                // Cognitive
+                updateSegments(document.querySelectorAll('.border-2.border-outline:nth-of-type(3) .rating-segment'), place.features.quiet_zones ? 5 : 2);
+            })
+            .catch(err => console.error('Error loading place details:', err));
+
+        function updateSegments(segments, filledCount) {
+            segments.forEach((seg, idx) => {
+                if (idx < filledCount) {
+                    seg.classList.add('bg-primary');
+                    seg.classList.remove('bg-surface-dim');
+                } else {
+                    seg.classList.remove('bg-primary');
+                    seg.classList.add('bg-surface-dim');
+                }
+            });
+        }
+
         // Simple Micro-interaction for rating segments
         document.querySelectorAll('.rating-segment').forEach(seg => {
             seg.addEventListener('mouseenter', () => {
