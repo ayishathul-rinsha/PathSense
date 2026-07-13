@@ -1,501 +1,401 @@
 <!DOCTYPE html>
-
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>PathSense - Accessible Navigation Hub</title>
+<meta name="description" content="PathSense helps people with disabilities find the most accessible places near them through personalized accessibility scores and community reviews."/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link crossorigin="" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" rel="stylesheet"/>
+<script crossorigin="" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "surface-dim": "#d8dadc",
-                    "primary-fixed-dim": "#bec6e0",
-                    "on-secondary-fixed": "#00201d",
-                    "inverse-primary": "#bec6e0",
-                    "primary": "#000000",
-                    "error-container": "#ffdad6",
-                    "on-tertiary-fixed-variant": "#6e3900",
-                    "secondary-fixed-dim": "#6bd8cb",
-                    "tertiary-container": "#2f1500",
-                    "surface-container-low": "#f2f4f6",
-                    "on-tertiary-container": "#c76c00",
-                    "primary-fixed": "#dae2fd",
-                    "error": "#ba1a1a",
-                    "surface-container-high": "#e6e8ea",
-                    "on-primary-fixed": "#131b2e",
-                    "on-secondary-fixed-variant": "#005049",
-                    "on-primary": "#ffffff",
-                    "tertiary-fixed-dim": "#ffb77d",
-                    "tertiary-fixed": "#ffdcc3",
-                    "inverse-on-surface": "#eff1f3",
-                    "surface-variant": "#e0e3e5",
-                    "on-primary-container": "#7c839b",
-                    "on-surface-variant": "#45464d",
-                    "on-secondary": "#ffffff",
-                    "background": "#f7f9fb",
-                    "surface-container": "#eceef0",
-                    "surface-bright": "#f7f9fb",
-                    "surface-tint": "#565e74",
-                    "primary-container": "#131b2e",
-                    "on-background": "#191c1e",
-                    "surface-container-highest": "#e0e3e5",
-                    "outline": "#76777d",
-                    "on-error": "#ffffff",
-                    "on-secondary-container": "#006f66",
-                    "secondary-container": "#86f2e4",
-                    "surface": "#f7f9fb",
-                    "on-error-container": "#93000a",
-                    "secondary": "#006a61",
-                    "outline-variant": "#c6c6cd",
-                    "inverse-surface": "#2d3133",
-                    "on-tertiary": "#ffffff",
-                    "on-tertiary-fixed": "#2f1500",
-                    "on-primary-fixed-variant": "#3f465c",
-                    "surface-container-lowest": "#ffffff",
-                    "on-surface": "#191c1e",
-                    "secondary-fixed": "#89f5e7",
-                    "tertiary": "#000000"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "spacing": {
-                    "gutter": "1.5rem",
-                    "stack-sm": "0.75rem",
-                    "touch-target-min": "48px",
-                    "margin-desktop": "2.5rem",
-                    "margin-mobile": "1.25rem",
-                    "stack-lg": "3rem",
-                    "stack-md": "1.5rem"
-            },
-            "fontFamily": {
-                    "headline-lg-mobile": ["Atkinson Hyperlegible Next"],
-                    "label-lg": ["Atkinson Hyperlegible Next"],
-                    "headline-lg": ["Atkinson Hyperlegible Next"],
-                    "headline-xl": ["Atkinson Hyperlegible Next"],
-                    "body-lg": ["Atkinson Hyperlegible Next"],
-                    "body-md": ["Atkinson Hyperlegible Next"],
-                    "label-md": ["Atkinson Hyperlegible Next"],
-                    "headline-md": ["Atkinson Hyperlegible Next"]
-            },
-            "fontSize": {
-                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "700"}],
-                    "label-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "700"}],
-                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "700"}],
-                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "800"}],
-                    "body-lg": ["20px", {"lineHeight": "30px", "letterSpacing": "0.02em", "fontWeight": "400"}],
-                    "body-md": ["18px", {"lineHeight": "28px", "letterSpacing": "0.02em", "fontWeight": "400"}],
-                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.03em", "fontWeight": "600"}],
-                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "700"}]
-            }
-          },
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-dim":"#d8dadc","primary-fixed-dim":"#bec6e0","on-secondary-fixed":"#00201d","inverse-primary":"#bec6e0","primary":"#000000","error-container":"#ffdad6","on-tertiary-fixed-variant":"#6e3900","secondary-fixed-dim":"#6bd8cb","tertiary-container":"#2f1500","surface-container-low":"#f2f4f6","on-tertiary-container":"#c76c00","primary-fixed":"#dae2fd","error":"#ba1a1a","surface-container-high":"#e6e8ea","on-primary-fixed":"#131b2e","on-secondary-fixed-variant":"#005049","on-primary":"#ffffff","tertiary-fixed-dim":"#ffb77d","tertiary-fixed":"#ffdcc3","inverse-on-surface":"#eff1f3","surface-variant":"#e0e3e5","on-primary-container":"#7c839b","on-surface-variant":"#45464d","on-secondary":"#ffffff","background":"#f7f9fb","surface-container":"#eceef0","surface-bright":"#f7f9fb","surface-tint":"#565e74","primary-container":"#131b2e","on-background":"#191c1e","surface-container-highest":"#e0e3e5","outline":"#76777d","on-error":"#ffffff","on-secondary-container":"#006f66","secondary-container":"#86f2e4","surface":"#f7f9fb","on-error-container":"#93000a","secondary":"#006a61","outline-variant":"#c6c6cd","inverse-surface":"#2d3133","on-tertiary":"#ffffff","on-tertiary-fixed":"#2f1500","on-primary-fixed-variant":"#3f465c","surface-container-lowest":"#ffffff","on-surface":"#191c1e","secondary-fixed":"#89f5e7","tertiary":"#000000"
         },
-      }
-    </script>
+        "borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},
+        "spacing":{"gutter":"1.5rem","stack-sm":"0.75rem","touch-target-min":"48px","margin-desktop":"2.5rem","margin-mobile":"1.25rem","stack-lg":"3rem","stack-md":"1.5rem"},
+        "fontFamily":{"headline-lg-mobile":["Atkinson Hyperlegible Next"],"label-lg":["Atkinson Hyperlegible Next"],"headline-lg":["Atkinson Hyperlegible Next"],"headline-xl":["Atkinson Hyperlegible Next"],"body-lg":["Atkinson Hyperlegible Next"],"body-md":["Atkinson Hyperlegible Next"],"label-md":["Atkinson Hyperlegible Next"],"headline-md":["Atkinson Hyperlegible Next"]},
+        "fontSize":{"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"0.01em","fontWeight":"700"}],"label-lg":["16px",{"lineHeight":"24px","letterSpacing":"0.05em","fontWeight":"700"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"0.01em","fontWeight":"700"}],"headline-xl":["40px",{"lineHeight":"48px","letterSpacing":"0.02em","fontWeight":"800"}],"body-lg":["20px",{"lineHeight":"30px","letterSpacing":"0.02em","fontWeight":"400"}],"body-md":["18px",{"lineHeight":"28px","letterSpacing":"0.02em","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.03em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"0.01em","fontWeight":"700"}]}
+      },
+    },
+  }
+</script>
 <style>
-        body { font-family: 'Atkinson Hyperlegible Next', sans-serif; }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            display: inline-block;
-            line-height: 1;
-            text-transform: none;
-            letter-spacing: normal;
-            word-wrap: normal;
-            white-space: nowrap;
-            direction: ltr;
-        }
-        .map-container {
-            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-        }
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #c6c6cd; border-radius: 10px; }
-        .active-ring { outline: 3px solid #000000; outline-offset: 2px; }
-    </style>
+  body { font-family: 'Atkinson Hyperlegible Next', sans-serif; }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block; line-height: 1; text-transform: none; letter-spacing: normal;
+    word-wrap: normal; white-space: nowrap; direction: ltr;
+  }
+  .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+  .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+  .custom-scrollbar::-webkit-scrollbar-thumb { background: #c6c6cd; border-radius: 10px; }
+  #home-map { height: 100%; width: 100%; z-index: 10; border-radius: 0.5rem; }
+  .leaflet-bar { border: 2px solid #c6c6cd !important; box-shadow: none !important; border-radius: 0.5rem !important; overflow: hidden; }
+  .leaflet-bar a { background-color: #fff !important; color: #191c1e !important; border-bottom: 2px solid #c6c6cd !important; width: 40px !important; height: 40px !important; line-height: 40px !important; font-weight: bold !important; }
+  .leaflet-bar a:last-child { border-bottom: none !important; }
+  .leaflet-bar a:hover { background-color: #e6e8ea !important; }
+  .custom-map-marker { display:flex;align-items:center;justify-content:center;border-radius:9999px;border:2px solid white;box-shadow:0 4px 6px -1px rgb(0 0 0/0.1);transition:transform 0.2s cubic-bezier(0.175,0.885,0.32,1.275); }
+  .custom-map-marker:hover { transform: scale(1.15) translateY(-4px); z-index: 1000 !important; }
+  .marker-primary { background-color: #000; color: white; }
+  .marker-secondary { background-color: #86f2e4; color: #006f66; }
+  .leaflet-popup-content-wrapper { border-radius: 0.5rem; padding: 0; border: 2px solid #c6c6cd; }
+  .leaflet-popup-content { margin: 12px; font-family: 'Atkinson Hyperlegible Next', sans-serif; }
+  .selected-location-card { animation: slideUp 0.3s ease-out; }
+  @keyframes slideUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+</style>
 </head>
 <body class="bg-background text-on-surface selection:bg-secondary-container">
+
 <!-- TopAppBar -->
-<header class="bg-background dark:bg-background text-primary dark:text-on-primary font-headline-md text-headline-md docked full-width top-0 border-b-2 border-outline-variant dark:border-outline flat no shadows flex justify-between items-center px-gutter py-4 w-full sticky top-0 z-50">
-<div class="flex items-center gap-stack-sm">
-<a href="pathsense_accessibility_navigator.html" class="font-headline-xl text-headline-xl text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity">PathSense</a>
-</div>
-<nav class="hidden md:flex items-center gap-stack-md">
-<a class="text-primary dark:text-secondary-fixed font-bold border-b-2 border-primary py-1 px-2 hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors" href="pathsense_accessibility_navigator.html">Home</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant py-1 px-2 hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors" href="pathsense_community_reports.html">Community Reports</a>
-<a class="text-on-surface-variant dark:text-on-surface-variant py-1 px-2 hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors" href="pathsense_user_profile.html">Settings</a>
-</nav>
-<div class="flex items-center gap-stack-md">
-<a href="pathsense_community_reports.html" class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full transition-all duration-200 active:opacity-80 active:scale-95">notifications</a>
-<a href="pathsense_user_profile.html" class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full transition-all duration-200 active:opacity-80 active:scale-95">account_circle</a>
-</div>
+<header id="top-header" class="bg-background text-primary font-headline-md text-headline-md border-b-2 border-outline-variant flex justify-between items-center px-gutter py-4 w-full sticky top-0 z-50">
+  <div class="flex items-center gap-stack-sm">
+    <a href="pathsense_accessibility_navigator.html" class="font-headline-xl text-headline-xl text-primary hover:opacity-80 transition-opacity">PathSense</a>
+  </div>
+  <nav class="hidden md:flex items-center gap-stack-md">
+    <a class="text-primary font-bold border-b-2 border-primary py-1 px-2 hover:bg-surface-container transition-colors" href="pathsense_accessibility_navigator.html">Home</a>
+    <a class="text-on-surface-variant py-1 px-2 hover:bg-surface-container transition-colors" href="pathsense_interactive_nearby_map.html">Explore</a>
+    <a class="text-on-surface-variant py-1 px-2 hover:bg-surface-container transition-colors" href="pathsense_community_reports.html">Community Reports</a>
+    <a class="text-on-surface-variant py-1 px-2 hover:bg-surface-container transition-colors" href="pathsense_user_profile.html">Profile</a>
+  </nav>
+  <div class="flex items-center gap-stack-md">
+    <a href="pathsense_community_reports.html" class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full transition-all duration-200">notifications</a>
+    <a href="pathsense_user_profile.html" class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full transition-all duration-200">account_circle</a>
+  </div>
 </header>
+
 <div class="flex min-h-screen">
-<!-- SideNavBar (Desktop Only) -->
-<aside class="hidden lg:flex flex-col h-screen p-gutter gap-stack-md bg-surface-container-lowest dark:bg-surface-container-low border-r-2 border-outline-variant dark:border-outline h-full w-72 fixed left-0 top-0 pt-24 z-40">
-<div class="mb-stack-lg">
-<a href="pathsense_accessibility_navigator.html" class="font-headline-lg text-headline-lg text-primary dark:text-primary-fixed hover:opacity-80 transition-opacity">PathSense</a>
-<p class="font-label-lg text-label-lg opacity-70">Accessible Navigation</p>
+  <!-- SideNavBar (Desktop Only) -->
+  <aside class="hidden lg:flex flex-col h-screen p-gutter gap-stack-md bg-surface-container-lowest border-r-2 border-outline-variant w-72 fixed left-0 top-0 pt-24 z-40">
+    <div class="mb-stack-lg">
+      <a href="pathsense_accessibility_navigator.html" class="font-headline-lg text-headline-lg text-primary hover:opacity-80 transition-opacity">PathSense</a>
+      <p class="font-label-lg text-label-lg opacity-70">Accessible Navigation</p>
+    </div>
+    <nav class="flex flex-col gap-stack-sm">
+      <a class="flex items-center gap-stack-sm p-3 bg-secondary-container text-on-secondary-container rounded-full border-2 border-secondary font-label-lg text-label-lg transition-transform active:scale-[0.98]" href="pathsense_accessibility_navigator.html">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span><span>Home</span>
+      </a>
+      <a class="flex items-center gap-stack-sm p-3 text-on-surface-variant hover:bg-surface-container-high border-2 border-transparent hover:border-primary rounded-full font-label-lg text-label-lg transition-all duration-200" href="pathsense_interactive_nearby_map.html">
+        <span class="material-symbols-outlined">explore</span><span>Explore</span>
+      </a>
+      <a class="flex items-center gap-stack-sm p-3 text-on-surface-variant hover:bg-surface-container-high border-2 border-transparent hover:border-primary rounded-full font-label-lg text-label-lg transition-all duration-200" href="pathsense_user_profile.html">
+        <span class="material-symbols-outlined">person</span><span>Profile</span>
+      </a>
+      <a class="flex items-center gap-stack-sm p-3 text-on-surface-variant hover:bg-surface-container-high border-2 border-transparent hover:border-primary rounded-full font-label-lg text-label-lg transition-all duration-200" href="pathsense_community_reports.html">
+        <span class="material-symbols-outlined">campaign</span><span>Community Reports</span>
+      </a>
+      <a class="flex items-center gap-stack-sm p-3 text-on-surface-variant hover:bg-surface-container-high border-2 border-transparent hover:border-primary rounded-full font-label-lg text-label-lg transition-all duration-200" href="pathsense_settings.html">
+        <span class="material-symbols-outlined">settings</span><span>Settings</span>
+      </a>
+    </nav>
+    <div class="mt-auto p-4 border-2 border-outline rounded-xl bg-surface">
+      <p class="font-label-md text-label-md mb-2">Help the community</p>
+      <a href="pathsense_give_a_review.html" class="block w-full bg-secondary text-on-secondary font-bold py-3 rounded-lg hover:bg-on-secondary-container transition-colors min-h-[48px] text-center">Give Review</a>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 lg:ml-72 transition-all duration-300">
+    <div class="max-w-[1440px] mx-auto p-margin-mobile md:p-margin-desktop">
+      
+      <!-- Personalized Greeting -->
+      <section class="mb-stack-lg flex flex-col md:flex-row md:items-end justify-between gap-stack-md">
+        <div>
+          <h1 class="font-headline-xl text-headline-xl mb-2" id="greeting">Hello, Sarah.</h1>
+          <div class="flex items-center gap-2 text-on-surface-variant" id="profile-label">
+            <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">accessible</span>
+            <p class="font-body-lg text-body-lg">Routes optimized for <span class="font-bold text-primary">Wheelchair Access</span></p>
+          </div>
+        </div>
+        <div class="flex gap-stack-sm">
+          <a href="pathsense_interactive_nearby_map.html" class="bg-surface-container-highest border-2 border-outline px-6 py-3 font-bold rounded-lg hover:bg-surface-dim transition-all flex items-center gap-2 min-h-[48px]">
+            <span class="material-symbols-outlined">explore</span>Explore Places
+          </a>
+          <a href="pathsense_give_a_review.html" class="bg-secondary text-on-secondary px-6 py-3 font-bold rounded-lg hover:bg-on-secondary-container transition-all flex items-center gap-2 min-h-[48px]">
+            <span class="material-symbols-outlined">add_comment</span>Give a Review
+          </a>
+        </div>
+      </section>
+
+      <!-- Split View: Search + Map -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-md min-h-[550px]">
+        
+        <!-- Left: Search & Location List -->
+        <div class="lg:col-span-5 flex flex-col gap-stack-md order-2 lg:order-1">
+          <!-- Search Bar -->
+          <div class="bg-surface-container-lowest border-2 border-primary p-4 rounded-xl shadow-sm">
+            <div class="flex items-center gap-stack-sm">
+              <span class="material-symbols-outlined text-outline">search</span>
+              <input id="search-input" class="w-full border-none focus:ring-0 font-body-md text-body-md bg-transparent placeholder:text-outline-variant" placeholder="Search accessible destinations..." type="text"/>
+              <button class="bg-surface-container-high px-4 py-2 rounded font-bold text-label-md border-2 border-outline flex items-center gap-1 hover:border-primary transition-all min-h-[48px]">
+                <span class="material-symbols-outlined text-[20px]">tune</span>Filter
+              </button>
+            </div>
+          </div>
+
+          <!-- Community Alert Banner -->
+          <div id="alert-banner" class="bg-secondary-container/30 border-2 border-secondary p-4 rounded-xl flex items-start gap-4">
+            <span class="material-symbols-outlined text-secondary text-[28px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+            <div>
+              <p class="font-bold text-label-lg" id="alert-title">Loading alerts...</p>
+              <p class="font-body-md text-body-md opacity-80" id="alert-desc"></p>
+            </div>
+          </div>
+
+          <!-- Location List (dynamically populated) -->
+          <div class="bg-surface-container-lowest border-2 border-outline-variant p-6 rounded-xl flex-1 overflow-hidden flex flex-col">
+            <h3 class="font-headline-md text-headline-md mb-stack-sm">Nearby Locations</h3>
+            <div id="location-list" class="space-y-2 overflow-y-auto custom-scrollbar flex-1 pr-2">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Map -->
+        <div class="lg:col-span-7 relative order-1 lg:order-2 h-[400px] lg:h-auto">
+          <div class="absolute inset-0 border-2 border-outline rounded-2xl overflow-hidden">
+            <div id="home-map"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Selected Location Action Card (hidden by default) -->
+      <div id="selected-location-panel" class="mt-stack-md hidden">
+        <div class="selected-location-card bg-surface-container-lowest border-2 border-primary p-6 rounded-xl shadow-lg">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <div class="bg-secondary-container p-3 rounded-xl">
+                <span class="material-symbols-outlined text-[32px] text-on-secondary-container">location_on</span>
+              </div>
+              <div>
+                <h3 class="font-headline-md text-headline-md" id="selected-name">Select a location</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant" id="selected-meta">Search or click a marker on the map</p>
+              </div>
+              <span id="selected-score-badge" class="bg-secondary-container text-on-secondary-container px-4 py-1 rounded-full font-bold text-lg ml-2 hidden">98%</span>
+            </div>
+            <div class="flex gap-3 flex-wrap">
+              <a id="btn-see-reviews" href="#" class="bg-surface-container-highest border-2 border-outline px-6 py-3 font-bold rounded-lg hover:bg-surface-dim transition-all flex items-center gap-2 min-h-[48px]">
+                <span class="material-symbols-outlined">reviews</span>See Reviews
+              </a>
+              <a id="btn-give-review" href="#" class="bg-secondary text-on-secondary px-6 py-3 font-bold rounded-lg hover:bg-on-secondary-container transition-all flex items-center gap-2 min-h-[48px]">
+                <span class="material-symbols-outlined">rate_review</span>Give a Review
+              </a>
+              <a id="btn-community-report" href="pathsense_community_reports.html" class="border-2 border-outline px-4 py-3 font-bold rounded-lg hover:bg-surface-container transition-all flex items-center gap-2 min-h-[48px] text-on-surface-variant">
+                <span class="material-symbols-outlined">campaign</span>Community Report
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Rated Reviews -->
+      <section class="mt-stack-lg">
+        <h2 class="font-headline-lg text-headline-lg mb-stack-sm">Top Rated Near You</h2>
+        <div id="top-reviews" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-stack-md">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+    </div>
+  </main>
 </div>
-<nav class="flex flex-col gap-stack-sm">
-<a class="flex items-center gap-stack-sm p-3 bg-secondary-container dark:bg-on-secondary-fixed-variant text-on-secondary-container dark:text-secondary-fixed rounded-full border-2 border-secondary font-label-lg text-label-lg transition-transform active:scale-[0.98]" href="pathsense_accessibility_navigator.html">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
-<span>Home</span>
-</a>
-<a class="flex items-center gap-stack-sm p-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high border-2 border-transparent hover:border-primary rounded-full font-label-lg text-label-lg transition-all duration-200" href="pathsense_user_profile.html">
-<span class="material-symbols-outlined">person</span>
-<span>Profile</span>
-</a>
-<a class="flex items-center gap-stack-sm p-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high border-2 border-transparent hover:border-primary rounded-full font-label-lg text-label-lg transition-all duration-200" href="pathsense_community_reports.html">
-<span class="material-symbols-outlined">campaign</span>
-<span>Community Reports</span>
-</a>
-<a class="flex items-center gap-stack-sm p-3 text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high border-2 border-transparent hover:border-primary rounded-full font-label-lg text-label-lg transition-all duration-200" href="pathsense_user_profile.html">
-<span class="material-symbols-outlined">settings</span>
-<span>Settings</span>
-</a>
-</nav>
-<div class="mt-auto p-4 border-2 border-outline rounded-xl bg-surface">
-<p class="font-label-md text-label-md mb-2">Help the community</p>
-<a href="pathsense_give_a_review.html" class="block w-full bg-secondary text-on-secondary font-bold py-3 rounded-lg hover:bg-on-secondary-container transition-colors min-h-[48px] text-center">
-                    Give Review
-                </a>
-</div>
-</aside>
-<!-- Main Content Area -->
-<main class="flex-1 lg:ml-72 transition-all duration-300">
-<div class="max-w-[1440px] mx-auto p-margin-mobile md:p-margin-desktop">
-<!-- Personalized Greeting / Hero Intro -->
-<section class="mb-stack-lg flex flex-col md:flex-row md:items-end justify-between gap-stack-md">
-<div>
-<h1 class="font-headline-xl text-headline-xl mb-2">Hello, Sarah.</h1>
-<div class="flex items-center gap-2 text-on-surface-variant">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">accessible</span>
-<p class="font-body-lg text-body-lg">Routes optimized for <span class="font-bold text-primary">Wheelchair Access</span></p>
-</div>
-</div>
-<div class="flex gap-stack-sm">
-<a href="pathsense_places_near_me.html" class="bg-surface-container-highest border-2 border-outline px-6 py-3 font-bold rounded-lg hover:bg-surface-dim transition-all flex items-center gap-2 min-h-[48px]">
-<span class="material-symbols-outlined">explore</span>
-                            Explore Places
-                        </a>
-<a href="pathsense_give_a_review.html" class="bg-secondary text-on-secondary px-6 py-3 font-bold rounded-lg hover:bg-on-secondary-container transition-all flex items-center gap-2 min-h-[48px]">
-<span class="material-symbols-outlined">add_comment</span>
-                            Give a Review
-                        </a>
-</div>
-</section>
-<!-- Split View Layout -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-md min-h-[600px]">
-<!-- Search & Recents (Left) -->
-<div class="lg:col-span-5 flex flex-col gap-stack-md order-2 lg:order-1">
-<!-- Search Bar -->
-<div class="bg-surface-container-lowest border-2 border-primary p-4 rounded-xl shadow-sm">
-<div class="flex items-center gap-stack-sm relative">
-<span class="material-symbols-outlined text-outline">search</span>
-<input class="w-full border-none focus:ring-0 font-body-md text-body-md bg-transparent placeholder:text-outline-variant" placeholder="Search accessible destinations..." type="text"/>
-<button class="bg-surface-container-high px-4 py-2 rounded font-bold text-label-md border-2 border-outline flex items-center gap-1 hover:border-primary transition-all min-h-[48px]">
-<span class="material-symbols-outlined text-[20px]">tune</span>
-                                    Filter
-                                </button>
-</div>
-</div>
-<!-- Community Alert Banner -->
-<div class="bg-secondary-container/30 border-2 border-secondary p-4 rounded-xl flex items-start gap-4">
-<span class="material-symbols-outlined text-secondary text-[28px]" style="font-variation-settings: 'FILL' 1;">warning</span>
-<div>
-<p class="font-bold text-label-lg">Elevator Out of Service</p>
-<p class="font-body-md text-body-md opacity-80">Main St. Station (South Entrance). Reported 12m ago.</p>
-</div>
-</div>
-<!-- Recent Locations -->
-<div class="bg-surface-container-lowest border-2 border-outline-variant p-6 rounded-xl flex-1 overflow-hidden flex flex-col">
-<h3 class="font-headline-md text-headline-md mb-stack-sm">Recent Locations</h3>
-<div class="space-y-4 overflow-y-auto custom-scrollbar flex-1 pr-2">
-<!-- Location Item -->
-<a href="pathsense_location_details.html?place_id=central_library" class="w-full flex items-center gap-4 p-4 hover:bg-surface-container-low border-2 border-transparent hover:border-outline transition-all rounded-lg group text-left">
-<div class="bg-surface-container-high p-3 rounded-lg group-hover:bg-white transition-colors">
-<span class="material-symbols-outlined">local_library</span>
-</div>
-<div class="flex-1">
-<p class="font-bold text-label-lg">Central Public Library</p>
-<div class="flex gap-3 mt-1">
-<span class="font-label-md text-label-md bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded">Step-free 5/5</span>
-<span class="font-label-md text-label-md text-outline">0.3 miles</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward_ios</span>
-</a>
-<a href="pathsense_location_details.html?place_id=modern_brew" class="w-full flex items-center gap-4 p-4 hover:bg-surface-container-low border-2 border-transparent hover:border-outline transition-all rounded-lg group text-left text-on-surface">
-<div class="bg-surface-container-high p-3 rounded-lg group-hover:bg-white transition-colors">
-<span class="material-symbols-outlined">restaurant</span>
-</div>
-<div class="flex-1">
-<p class="font-bold text-label-lg">Modern Brew Coffee</p>
-<div class="flex gap-3 mt-1">
-<span class="font-label-md text-label-md bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded">Ramp Access</span>
-<span class="font-label-md text-label-md text-outline">0.1 miles</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward_ios</span>
-</a>
-<a href="pathsense_location_details.html?place_id=westside_plaza" class="w-full flex items-center gap-4 p-4 hover:bg-surface-container-low border-2 border-transparent hover:border-outline transition-all rounded-lg group text-left text-on-surface">
-<div class="bg-surface-container-high p-3 rounded-lg group-hover:bg-white transition-colors">
-<span class="material-symbols-outlined">shopping_bag</span>
-</div>
-<div class="flex-1">
-<p class="font-bold text-label-lg">Westside Plaza</p>
-<div class="flex gap-3 mt-1">
-<span class="font-label-md text-label-md bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded">Wide Paths</span>
-<span class="font-label-md text-label-md text-outline">0.8 miles</span>
-</div>
-</div>
-<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward_ios</span>
-</a>
-</div>
-</div>
-</div>
-<!-- Interactive Map (Right) -->
-<div class="lg:col-span-7 relative order-1 lg:order-2 h-[400px] lg:h-auto">
-<div class="absolute inset-0 bg-surface-dim border-2 border-outline rounded-2xl overflow-hidden group">
-<!-- Map Placeholder with data-location -->
-<div class="w-full h-full bg-cover bg-center" data-alt="A highly detailed and realistic modern digital map interface of a metropolitan city center. The map features high-contrast rendering with clear navy blue street lines and clean white backgrounds. Visible are several large, distinctive circular map markers in vibrant teal and navy blue, each containing clear accessibility icons like a wheelchair and a hearing ear. The overall aesthetic is clean, corporate modern, and professionally designed for maximum legibility and cognitive ease." data-location="New York City" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCzTcRtFq5byjdKcjgXEGDR_FZYqgksIYD1lf2z7eX0tFZ5cBZ6H75oQIU1cSrfFucF3w3JCkyuu98J4MyipBCPfpe0MvRqFLPsAm9YDoNwdKeIkLGdXVYpBgNW7XJ3o_KmeuDFGZqi4l4g3GPI-RM-LyY6NJWOWYH9YGy3IbUUnuF39ZFunt09NNXWZyjNuNVzxjsQN_b6Y_kLBPdf0fd65cllJgjmkCMTSGx1IORgl3NYGqswwRi7')"></div>
-<!-- Custom Map UI Overlay -->
-<div class="absolute top-6 left-6 flex flex-col gap-2">
-<button class="bg-white border-2 border-primary p-2 rounded-lg shadow-lg hover:bg-surface-container transition-all active:scale-95">
-<span class="material-symbols-outlined">add</span>
-</button>
-<button class="bg-white border-2 border-primary p-2 rounded-lg shadow-lg hover:bg-surface-container transition-all active:scale-95">
-<span class="material-symbols-outlined">remove</span>
-</button>
-</div>
-<button class="absolute bottom-6 right-6 bg-white border-2 border-primary px-4 py-2 rounded-full shadow-lg font-bold flex items-center gap-2 hover:bg-surface-container transition-all min-h-[48px]">
-<span class="material-symbols-outlined">my_location</span>
-                                Recenter
-                            </button>
-<!-- Custom Large Map Marker Example -->
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer group">
-<div class="bg-primary text-on-primary w-12 h-12 rounded-full border-4 border-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">accessible</span>
-</div>
-<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-white border-2 border-primary p-2 rounded-lg whitespace-nowrap shadow-xl opacity-0 group-hover:opacity-100 transition-opacity">
-<p class="font-bold text-label-md">Central Mall (Fully Accessible)</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Featured Section: Accessibility Insights -->
-<section class="mt-stack-lg">
-<h2 class="font-headline-lg text-headline-lg mb-stack-sm">Top Rated Near You</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-stack-md">
-<!-- Review Card 1 -->
-<div class="bg-surface-container-lowest border-2 border-outline p-6 rounded-xl">
-<div class="flex items-center gap-4 mb-4">
-<div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center font-bold text-on-primary-fixed">JD</div>
-<div>
-<p class="font-bold text-label-lg">Jane Doe</p>
-<p class="font-label-md text-label-md opacity-60">Verified Guide</p>
-</div>
-</div>
-<div class="space-y-2 mb-4">
-<div class="flex justify-between items-center">
-<span class="font-label-md text-label-md">Step-free access</span>
-<div class="flex gap-1">
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 border border-outline rounded-sm"></div>
-</div>
-</div>
-<div class="flex justify-between items-center">
-<span class="font-label-md text-label-md">Visual signage</span>
-<div class="flex gap-1">
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-</div>
-</div>
-</div>
-<p class="font-body-md text-body-md mb-4 italic">"The automated doors here are exceptionally responsive, and there are no hidden lips on the thresholds. Perfect for powered chairs."</p>
-<p class="font-label-md text-label-md text-outline">Oct 24, 2023 • Metropolitan Museum</p>
-</div>
-<!-- Review Card 2 -->
-<div class="bg-surface-container-lowest border-2 border-outline p-6 rounded-xl">
-<div class="flex items-center gap-4 mb-4">
-<div class="w-12 h-12 bg-secondary-fixed rounded-full flex items-center justify-center font-bold text-on-secondary-fixed">MK</div>
-<div>
-<p class="font-bold text-label-lg">Mike K.</p>
-<p class="font-label-md text-label-md opacity-60">Community Member</p>
-</div>
-</div>
-<div class="space-y-2 mb-4">
-<div class="flex justify-between items-center">
-<span class="font-label-md text-label-md">Acoustic dampening</span>
-<div class="flex gap-1">
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 border border-outline rounded-sm"></div>
-<div class="w-4 h-2 border border-outline rounded-sm"></div>
-</div>
-</div>
-<div class="flex justify-between items-center">
-<span class="font-label-md text-label-md">Staff assistance</span>
-<div class="flex gap-1">
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-</div>
-</div>
-</div>
-<p class="font-body-md text-body-md mb-4 italic">"Great staff knowledge about sensory-friendly hours. The cafe can be a bit echoey during peak lunch, but overall very supportive."</p>
-<p class="font-label-md text-label-md text-outline">Oct 22, 2023 • Northside Cafe</p>
-</div>
-<!-- Review Card 3 -->
-<div class="bg-surface-container-lowest border-2 border-outline p-6 rounded-xl">
-<div class="flex items-center gap-4 mb-4">
-<div class="w-12 h-12 bg-primary-container rounded-full flex items-center justify-center font-bold text-on-primary">AR</div>
-<div>
-<p class="font-bold text-label-lg">Anita R.</p>
-<p class="font-label-md text-label-md opacity-60">Power User</p>
-</div>
-</div>
-<div class="space-y-2 mb-4">
-<div class="flex justify-between items-center">
-<span class="font-label-md text-label-md">Braille available</span>
-<div class="flex gap-1">
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-</div>
-</div>
-<div class="flex justify-between items-center">
-<span class="font-label-md text-label-md">Path width</span>
-<div class="flex gap-1">
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 bg-primary rounded-sm"></div>
-<div class="w-4 h-2 border border-outline rounded-sm"></div>
-</div>
-</div>
-</div>
-<p class="font-body-md text-body-md mb-4 italic">"Excellent tactile paving transitions from the street to the entrance. The menus have high-contrast large print options too."</p>
-<p class="font-label-md text-label-md text-outline">Oct 20, 2023 • Waterfront Park</p>
-</div>
-</div>
-</section>
-</div>
-</main>
-</div>
-<!-- Mobile Navigation Shell -->
+
+<!-- Mobile Navigation -->
 <footer class="md:hidden bg-background fixed bottom-0 left-0 right-0 z-50 flex justify-around items-center px-4 py-2 border-t-0 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
-<a href="pathsense_accessibility_navigator.html" class="flex flex-col items-center gap-1 p-2 bg-secondary-container text-on-secondary-container rounded-full px-4 border-2 border-secondary">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
-<span class="text-[10px] font-bold uppercase tracking-wider">Home</span>
-</a>
-<a href="pathsense_interactive_nearby_map.html" class="flex flex-col items-center gap-1 p-2 text-on-surface-variant">
-<span class="material-symbols-outlined">explore</span>
-<span class="text-[10px] font-bold uppercase tracking-wider">Explore</span>
-</a>
-<a href="pathsense_community_reports.html" class="flex flex-col items-center gap-1 p-2 text-on-surface-variant">
-<span class="material-symbols-outlined">campaign</span>
-<span class="text-[10px] font-bold uppercase tracking-wider">Reports</span>
-</a>
-<a href="pathsense_user_profile.html" class="flex flex-col items-center gap-1 p-2 text-on-surface-variant">
-<span class="material-symbols-outlined">person</span>
-<span class="text-[10px] font-bold uppercase tracking-wider">Profile</span>
-</a>
+  <a href="pathsense_accessibility_navigator.html" class="flex flex-col items-center gap-1 p-2 bg-secondary-container text-on-secondary-container rounded-full px-4 border-2 border-secondary">
+    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+    <span class="text-[10px] font-bold uppercase tracking-wider">Home</span>
+  </a>
+  <a href="pathsense_interactive_nearby_map.html" class="flex flex-col items-center gap-1 p-2 text-on-surface-variant">
+    <span class="material-symbols-outlined">explore</span>
+    <span class="text-[10px] font-bold uppercase tracking-wider">Explore</span>
+  </a>
+  <a href="pathsense_community_reports.html" class="flex flex-col items-center gap-1 p-2 text-on-surface-variant">
+    <span class="material-symbols-outlined">campaign</span>
+    <span class="text-[10px] font-bold uppercase tracking-wider">Reports</span>
+  </a>
+  <a href="pathsense_user_profile.html" class="flex flex-col items-center gap-1 p-2 text-on-surface-variant">
+    <span class="material-symbols-outlined">person</span>
+    <span class="text-[10px] font-bold uppercase tracking-wider">Profile</span>
+  </a>
 </footer>
+
+<script src="pathsense_utils.js"></script>
 <script>
-        // Simple Interaction logic
-        document.querySelectorAll('button').forEach(btn => {
-            btn.addEventListener('click', function() {
-                this.classList.add('scale-95', 'opacity-80');
-                setTimeout(() => {
-                    this.classList.remove('scale-95', 'opacity-80');
-                }, 150);
-            });
-        });
+  // ─── STATE ─────────────────────────────────────────────────
+  let allPlaces = [];
+  let selectedPlaceId = null;
+  let map, markers = [];
+  const iconMap = { 'Cultural Center': 'local_library', 'Cafe': 'restaurant', 'Mall': 'shopping_bag', 'Park': 'park', 'Hospital': 'local_hospital' };
 
-        // Search Input Focus State
-        const searchInput = document.querySelector('input[type="text"]');
-        const searchContainer = searchInput?.parentElement?.parentElement;
-        searchInput?.addEventListener('focus', () => {
-            searchContainer.classList.add('active-ring');
-        });
-        searchInput?.addEventListener('blur', () => {
-            searchContainer.classList.remove('active-ring');
-        });
+  // ─── INIT MAP ──────────────────────────────────────────────
+  const chicagoCenter = [41.8781, -87.6298];
+  map = L.map('home-map', { zoomControl: false, scrollWheelZoom: true }).setView(chicagoCenter, 14);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO', subdomains: 'abcd', maxZoom: 20
+  }).addTo(map);
+  L.control.zoom({ position: 'topright' }).addTo(map);
 
-        // Search submit - redirect to places near me with query
-        searchInput?.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' && searchInput.value.trim()) {
-                window.location.href = `pathsense_places_near_me.html?q=${encodeURIComponent(searchInput.value.trim())}`;
-            }
-        });
+  // ─── LOAD PROFILE ─────────────────────────────────────────
+  fetch('/api/profile').then(r => r.json()).then(profile => {
+    const greeting = document.getElementById('greeting');
+    if (greeting) greeting.textContent = `Hello, ${profile.name}.`;
+    const labelMap = {
+      wheelchair:'Wheelchair Access', cane_walker:'Cane/Walker Support', blind:'Visual Accessibility',
+      deaf:'Hearing Accessibility', autism:'Sensory-Friendly Routes', anxiety:'Anxiety-Aware Navigation', chronic_pain:'Fatigue-Friendly Routes'
+    };
+    const iconNameMap = {
+      wheelchair:'accessible', cane_walker:'elderly', blind:'visibility', deaf:'hearing_disabled',
+      autism:'psychology', anxiety:'self_improvement', chronic_pain:'accessibility_new'
+    };
+    const cats = profile.categories || [];
+    const label = cats.map(c => labelMap[c] || c).join(', ') || 'Personalized Accessibility';
+    const icon = iconNameMap[cats[0]] || 'accessible';
+    const profileEl = document.getElementById('profile-label');
+    if (profileEl) {
+      profileEl.innerHTML = `<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">${icon}</span>
+        <p class="font-body-lg text-body-lg">Routes optimized for <span class="font-bold text-primary">${label}</span></p>`;
+    }
+  }).catch(() => {});
 
-        // Dynamically personalize greeting from user profile
-        fetch('/api/profile')
-            .then(res => res.json())
-            .then(data => {
-                const categories = data.categories || [];
-                const labelMap = {
-                    wheelchair: 'Wheelchair Access',
-                    mobility: 'Mobility Assistance',
-                    blind: 'Visual Accessibility',
-                    visual: 'Visual Accessibility',
-                    deaf: 'Hearing Accessibility',
-                    hearing: 'Hearing Accessibility',
-                    autism: 'Sensory-Friendly Routes',
-                    cognitive: 'Cognitive Accessibility',
-                    sensory: 'Sensory-Friendly Routes'
-                };
-                const icon = categories.includes('blind') || categories.includes('visual') ? 'visibility' :
-                             categories.includes('deaf') || categories.includes('hearing') ? 'hearing' :
-                             categories.includes('autism') || categories.includes('sensory') ? 'self_improvement' :
-                             'accessible';
-                const label = labelMap[categories[0]] || 'Personalized Accessibility';
-                const profileEl = document.querySelector('.flex.items-center.gap-2.text-on-surface-variant');
-                if (profileEl) {
-                    profileEl.innerHTML = `
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">${icon}</span>
-                        <p class="font-body-lg text-body-lg">Routes optimized for <span class="font-bold text-primary">${label}</span></p>`;
-                }
-            })
-            .catch(() => {});
+  // ─── LOAD PLACES ───────────────────────────────────────────
+  fetch('/api/places').then(r => r.json()).then(places => {
+    allPlaces = places;
+    renderLocationList(places);
+    renderMapMarkers(places);
+    renderTopReviews(places);
+  }).catch(() => {});
 
-        // Fetch and show live community alert if any
-        fetch('/api/reports')
-            .then(res => res.json())
-            .then(reports => {
-                if (reports && reports.length > 0) {
-                    const latest = reports[0];
-                    const alertEl = document.querySelector('.bg-secondary-container\/30');
-                    if (alertEl) {
-                        const alertTitle = alertEl.querySelector('p.font-bold');
-                        const alertDesc = alertEl.querySelector('p.font-body-md');
-                        if (alertTitle) alertTitle.textContent = latest.title;
-                        if (alertDesc) alertDesc.textContent = `${latest.description.substring(0, 80)}... Reported ${latest.time_ago}.`;
-                    }
-                }
-            })
-            .catch(() => {});
-    </script>
+  function renderLocationList(places) {
+    const list = document.getElementById('location-list');
+    list.innerHTML = places.map(p => `
+      <button onclick="selectPlace('${p.id}')" class="w-full flex items-center gap-4 p-4 hover:bg-surface-container-low border-2 ${selectedPlaceId === p.id ? 'border-primary bg-surface-container-low' : 'border-transparent'} transition-all rounded-lg group text-left" id="loc-btn-${p.id}">
+        <div class="bg-surface-container-high p-3 rounded-lg group-hover:bg-white transition-colors">
+          <span class="material-symbols-outlined">${iconMap[p.category] || 'place'}</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-bold text-label-lg truncate">${p.name}</p>
+          <div class="flex gap-3 mt-1 flex-wrap">
+            <span class="font-label-md text-label-md ${PathSense.getScoreBadgeClass(p.score)} px-2 py-0.5 rounded">${p.score}% Match</span>
+            <span class="font-label-md text-label-md text-outline">${p.distance}</span>
+          </div>
+        </div>
+        <span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors">arrow_forward_ios</span>
+      </button>
+    `).join('');
+  }
+
+  function renderMapMarkers(places) {
+    markers.forEach(m => map.removeLayer(m));
+    markers = [];
+    places.forEach((p, i) => {
+      const customIcon = L.divIcon({
+        html: `<div class="custom-map-marker w-10 h-10 ${p.score >= 85 ? 'marker-primary' : 'marker-secondary'}">
+                <span class="material-symbols-outlined text-[24px]">${iconMap[p.category] || 'place'}</span>
+               </div>`,
+        className: '', iconSize: [40, 40], iconAnchor: [20, 40]
+      });
+      const marker = L.marker(p.coords, { icon: customIcon }).addTo(map);
+      marker.bindPopup(`<div class="text-primary"><p class="font-bold text-sm">${p.name}</p><p class="text-xs text-on-surface-variant font-bold uppercase tracking-wider mt-1">${p.score}% Match</p></div>`, { closeButton: false, offset: [0, -35] });
+      marker.on('click', () => selectPlace(p.id));
+      markers.push(marker);
+    });
+  }
+
+  // ─── SELECT PLACE ──────────────────────────────────────────
+  function selectPlace(placeId) {
+    selectedPlaceId = placeId;
+    const place = allPlaces.find(p => p.id === placeId);
+    if (!place) return;
+
+    // Update selected panel
+    const panel = document.getElementById('selected-location-panel');
+    panel.classList.remove('hidden');
+    document.getElementById('selected-name').textContent = place.name;
+    document.getElementById('selected-meta').textContent = `${place.distance} • ${place.category} • ${place.address || 'Chicago, IL'}`;
+    const badge = document.getElementById('selected-score-badge');
+    badge.textContent = `${place.score}%`;
+    badge.className = `${PathSense.getScoreBadgeClass(place.score)} px-4 py-1 rounded-full font-bold text-lg ml-2`;
+    document.getElementById('btn-see-reviews').href = `pathsense_location_details.html?place_id=${placeId}`;
+    document.getElementById('btn-give-review').href = `pathsense_give_a_review.html?place_id=${placeId}`;
+
+    // Highlight in list
+    renderLocationList(allPlaces);
+
+    // Focus map marker
+    const idx = allPlaces.findIndex(p => p.id === placeId);
+    if (markers[idx]) {
+      map.flyTo(markers[idx].getLatLng(), 15, { duration: 1 });
+      markers[idx].openPopup();
+    }
+    
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // ─── SEARCH ────────────────────────────────────────────────
+  const searchInput = document.getElementById('search-input');
+  searchInput.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase().trim();
+    if (!q) {
+      renderLocationList(allPlaces);
+      renderMapMarkers(allPlaces);
+      return;
+    }
+    const filtered = allPlaces.filter(p => p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q) || (p.address && p.address.toLowerCase().includes(q)));
+    renderLocationList(filtered);
+    renderMapMarkers(filtered);
+  });
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const q = searchInput.value.toLowerCase().trim();
+      const filtered = allPlaces.filter(p => p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q));
+      if (filtered.length > 0) selectPlace(filtered[0].id);
+    }
+  });
+
+  // ─── LOAD ALERT ────────────────────────────────────────────
+  fetch('/api/reports').then(r => r.json()).then(reports => {
+    const active = reports.filter(r => r.status === 'active');
+    if (active.length > 0) {
+      document.getElementById('alert-title').textContent = active[0].title;
+      document.getElementById('alert-desc').textContent = `${active[0].description.substring(0, 80)}... Reported ${active[0].time_ago}.`;
+    }
+  }).catch(() => {});
+
+  // ─── TOP REVIEWS ───────────────────────────────────────────
+  function renderTopReviews(places) {
+    const container = document.getElementById('top-reviews');
+    // Fetch reviews for each place
+    const promises = places.slice(0, 3).map(p =>
+      fetch(`/api/reviews/${p.id}`).then(r => r.json()).then(reviews => ({ place: p, reviews }))
+    );
+    Promise.all(promises).then(results => {
+      container.innerHTML = results.map(({ place, reviews }) => {
+        const review = reviews[0];
+        if (!review) return '';
+        return `
+          <div class="bg-surface-container-lowest border-2 border-outline p-6 rounded-xl hover:border-primary transition-all">
+            <div class="flex items-center gap-4 mb-4">
+              <div class="w-12 h-12 bg-primary-fixed rounded-full flex items-center justify-center font-bold text-on-primary-fixed">${review.userName.split(' ').map(n=>n[0]).join('')}</div>
+              <div>
+                <p class="font-bold text-label-lg">${review.userName}</p>
+                <p class="font-label-md text-label-md opacity-60">${review.userType}</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 mb-3">
+              ${PathSense.createStars(review.overallRating)}
+              <span class="font-label-md text-label-md text-on-surface-variant">${review.overallRating}/5</span>
+            </div>
+            <p class="font-body-md text-body-md mb-4 italic line-clamp-3">"${review.text}"</p>
+            <p class="font-label-md text-label-md text-outline">${review.timeAgo} • ${place.name}</p>
+          </div>`;
+      }).join('');
+    }).catch(() => {});
+  }
+</script>
 </body></html>

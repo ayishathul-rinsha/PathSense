@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PathSense - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config={darkMode:"class",theme:{extend:{
+    "colors":{"surface-dim":"#d8dadc","primary-fixed-dim":"#bec6e0","on-secondary-fixed":"#00201d","inverse-primary":"#bec6e0","primary":"#000000","error-container":"#ffdad6","on-tertiary-fixed-variant":"#6e3900","secondary-fixed-dim":"#6bd8cb","tertiary-container":"#2f1500","surface-container-low":"#f2f4f6","on-tertiary-container":"#c76c00","primary-fixed":"#dae2fd","error":"#ba1a1a","surface-container-high":"#e6e8ea","on-primary-fixed":"#131b2e","on-secondary-fixed-variant":"#005049","on-primary":"#ffffff","tertiary-fixed-dim":"#ffb77d","tertiary-fixed":"#ffdcc3","inverse-on-surface":"#eff1f3","surface-variant":"#e0e3e5","on-primary-container":"#7c839b","on-surface-variant":"#45464d","on-secondary":"#ffffff","background":"#f7f9fb","surface-container":"#eceef0","surface-bright":"#f7f9fb","surface-tint":"#565e74","primary-container":"#131b2e","on-background":"#191c1e","surface-container-highest":"#e0e3e5","outline":"#76777d","on-error":"#ffffff","on-secondary-container":"#006f66","secondary-container":"#86f2e4","surface":"#f7f9fb","on-error-container":"#93000a","secondary":"#006a61","outline-variant":"#c6c6cd","inverse-surface":"#2d3133","on-tertiary":"#ffffff","on-tertiary-fixed":"#2f1500","on-primary-fixed-variant":"#3f465c","surface-container-lowest":"#ffffff","on-surface":"#191c1e","secondary-fixed":"#89f5e7","tertiary":"#000000"},
+    "borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},
+    "spacing":{"gutter":"1.5rem","stack-sm":"0.75rem","touch-target-min":"48px","margin-desktop":"2.5rem","margin-mobile":"1.25rem","stack-lg":"3rem","stack-md":"1.5rem"},
+    "fontFamily":{"headline-lg-mobile":["Atkinson Hyperlegible Next"],"label-lg":["Atkinson Hyperlegible Next"],"headline-lg":["Atkinson Hyperlegible Next"],"headline-xl":["Atkinson Hyperlegible Next"],"body-lg":["Atkinson Hyperlegible Next"],"body-md":["Atkinson Hyperlegible Next"],"label-md":["Atkinson Hyperlegible Next"],"headline-md":["Atkinson Hyperlegible Next"]},
+    "fontSize":{"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"0.01em","fontWeight":"700"}],"label-lg":["16px",{"lineHeight":"24px","letterSpacing":"0.05em","fontWeight":"700"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"0.01em","fontWeight":"700"}],"headline-xl":["40px",{"lineHeight":"48px","letterSpacing":"0.02em","fontWeight":"800"}],"body-lg":["20px",{"lineHeight":"30px","letterSpacing":"0.02em","fontWeight":"400"}],"body-md":["18px",{"lineHeight":"28px","letterSpacing":"0.02em","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.03em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"0.01em","fontWeight":"700"}]}
+  }}}
+</script>
+<style>
+  body { font-family: 'Atkinson Hyperlegible Next', sans-serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .toggle-switch { position:relative;display:inline-flex;align-items:center;cursor:pointer; }
+  .toggle-switch input { position:absolute;opacity:0;width:0;height:0; }
+  .toggle-slider { width:56px;height:32px;background:#d8dadc;border-radius:9999px;transition:all 0.3s;position:relative; }
+  .toggle-slider::after { content:'';position:absolute;top:4px;left:4px;width:24px;height:24px;background:white;border-radius:50%;transition:all 0.3s;box-shadow:0 2px 4px rgba(0,0,0,0.2); }
+  .toggle-switch input:checked + .toggle-slider { background:#006a61; }
+  .toggle-switch input:checked + .toggle-slider::after { transform:translateX(24px); }
+</style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-gutter py-4 w-full sticky top-0 z-50 bg-background border-b-2 border-outline-variant">
+  <div class="flex items-center gap-4">
+    <button onclick="window.history.back()" class="w-touch-target-min h-touch-target-min flex items-center justify-center hover:bg-surface-container rounded-full transition-colors">
+      <span class="material-symbols-outlined">arrow_back</span>
+    </button>
+    <a href="pathsense_accessibility_navigator.html" class="font-headline-xl text-headline-xl text-primary">Settings</a>
+  </div>
+  <div class="flex items-center gap-stack-sm">
+    <a href="pathsense_user_profile.html" class="material-symbols-outlined p-2 hover:bg-surface-container rounded-full transition-colors">account_circle</a>
+  </div>
+</header>
+
+<div class="flex min-h-screen">
+  <!-- SideNavBar -->
+  <nav class="hidden lg:flex flex-col h-screen p-gutter gap-stack-md bg-surface-container-lowest border-r-2 border-outline-variant w-72 fixed left-0 top-0 z-40">
+    <div class="mb-stack-lg pt-4">
+      <a href="pathsense_accessibility_navigator.html" class="font-headline-lg text-headline-lg text-primary hover:opacity-80 transition-opacity">PathSense</a>
+      <p class="font-label-md text-label-md text-on-surface-variant">Accessible Navigation</p>
+    </div>
+    <div class="flex flex-col gap-2">
+      <a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 font-label-lg rounded-full" href="pathsense_accessibility_navigator.html"><span class="material-symbols-outlined">home</span><span>Home</span></a>
+      <a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 font-label-lg rounded-full" href="pathsense_user_profile.html"><span class="material-symbols-outlined">person</span><span>Profile</span></a>
+      <a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 font-label-lg rounded-full" href="pathsense_community_reports.html"><span class="material-symbols-outlined">campaign</span><span>Community Reports</span></a>
+      <a class="flex items-center gap-4 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-full border-2 border-secondary font-label-lg active:scale-[0.98] transition-transform" href="pathsense_settings.html"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">settings</span><span>Settings</span></a>
+    </div>
+    <div class="mt-auto"><a href="pathsense_give_a_review.html" class="block w-full bg-secondary text-on-secondary font-bold py-3 rounded-lg text-center hover:bg-on-secondary-container transition-colors">Give Review</a></div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="flex-1 lg:ml-72 p-margin-mobile md:p-margin-desktop">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="font-headline-xl text-headline-xl text-primary mb-2">Settings</h1>
+      <p class="font-body-lg text-on-surface-variant mb-stack-lg">Customize your PathSense experience.</p>
+
+      <!-- Appearance -->
+      <section class="mb-stack-lg">
+        <h2 class="font-headline-md text-headline-md mb-stack-md flex items-center gap-3">
+          <span class="material-symbols-outlined">palette</span>Appearance
+        </h2>
+        <div class="space-y-4">
+          <div class="flex items-center justify-between p-5 bg-surface-container-lowest border-2 border-outline-variant rounded-xl hover:border-primary transition-all">
+            <div class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-[28px]">dark_mode</span>
+              <div>
+                <p class="font-label-lg text-label-lg">Dark Mode</p>
+                <p class="font-label-md text-on-surface-variant">Reduce eye strain in low-light environments</p>
+              </div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-dark" onchange="toggleSetting('darkMode', this.checked)"/>
+              <div class="toggle-slider"></div>
+            </label>
+          </div>
+
+          <div class="flex items-center justify-between p-5 bg-surface-container-lowest border-2 border-outline-variant rounded-xl hover:border-primary transition-all">
+            <div class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-[28px]">text_increase</span>
+              <div>
+                <p class="font-label-lg text-label-lg">Larger Font Size</p>
+                <p class="font-label-md text-on-surface-variant">Increase text size by 20% across all pages</p>
+              </div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-font" onchange="toggleSetting('largeFont', this.checked)"/>
+              <div class="toggle-slider"></div>
+            </label>
+          </div>
+
+          <div class="flex items-center justify-between p-5 bg-surface-container-lowest border-2 border-outline-variant rounded-xl hover:border-primary transition-all">
+            <div class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-[28px]">contrast</span>
+              <div>
+                <p class="font-label-lg text-label-lg">High Contrast</p>
+                <p class="font-label-md text-on-surface-variant">Enhanced contrast for better visibility</p>
+              </div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-contrast" onchange="toggleSetting('highContrast', this.checked)"/>
+              <div class="toggle-slider"></div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Notifications -->
+      <section class="mb-stack-lg">
+        <h2 class="font-headline-md text-headline-md mb-stack-md flex items-center gap-3">
+          <span class="material-symbols-outlined">notifications</span>Notifications
+        </h2>
+        <div class="space-y-4">
+          <div class="flex items-center justify-between p-5 bg-surface-container-lowest border-2 border-outline-variant rounded-xl hover:border-primary transition-all">
+            <div class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-[28px]">campaign</span>
+              <div>
+                <p class="font-label-lg text-label-lg">Community Alerts</p>
+                <p class="font-label-md text-on-surface-variant">Get notified about nearby accessibility issues</p>
+              </div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-alerts" checked onchange="toggleSetting('communityAlerts', this.checked)"/>
+              <div class="toggle-slider"></div>
+            </label>
+          </div>
+
+          <div class="flex items-center justify-between p-5 bg-surface-container-lowest border-2 border-outline-variant rounded-xl hover:border-primary transition-all">
+            <div class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-[28px]">reviews</span>
+              <div>
+                <p class="font-label-lg text-label-lg">Review Updates</p>
+                <p class="font-label-md text-on-surface-variant">Notifications when someone finds your review helpful</p>
+              </div>
+            </div>
+            <label class="toggle-switch">
+              <input type="checkbox" id="toggle-reviews" checked onchange="toggleSetting('reviewUpdates', this.checked)"/>
+              <div class="toggle-slider"></div>
+            </label>
+          </div>
+        </div>
+      </section>
+
+      <!-- Navigation Preferences -->
+      <section class="mb-stack-lg">
+        <h2 class="font-headline-md text-headline-md mb-stack-md flex items-center gap-3">
+          <span class="material-symbols-outlined">navigation</span>Navigation
+        </h2>
+        <div class="space-y-4">
+          <div class="p-5 bg-surface-container-lowest border-2 border-outline-variant rounded-xl">
+            <div class="flex items-center gap-4 mb-3">
+              <span class="material-symbols-outlined text-[28px]">straighten</span>
+              <div>
+                <p class="font-label-lg text-label-lg">Distance Unit</p>
+                <p class="font-label-md text-on-surface-variant">Choose your preferred distance measurement</p>
+              </div>
+            </div>
+            <div class="flex gap-3 mt-2">
+              <button class="flex-1 py-3 bg-primary text-on-primary font-bold rounded-lg border-2 border-primary" id="unit-miles">Miles</button>
+              <button class="flex-1 py-3 bg-surface-container-high text-on-surface-variant font-bold rounded-lg border-2 border-outline hover:border-primary transition-all" id="unit-km" onclick="toggleSetting('distanceUnit','km');this.classList.add('bg-primary','text-on-primary');this.classList.remove('bg-surface-container-high','text-on-surface-variant');document.getElementById('unit-miles').classList.remove('bg-primary','text-on-primary');document.getElementById('unit-miles').classList.add('bg-surface-container-high','text-on-surface-variant');">Kilometers</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Account -->
+      <section class="mb-stack-lg">
+        <h2 class="font-headline-md text-headline-md mb-stack-md flex items-center gap-3">
+          <span class="material-symbols-outlined">manage_accounts</span>Account
+        </h2>
+        <div class="space-y-4">
+          <a href="pathsense_user_profile.html" class="flex items-center justify-between p-5 bg-surface-container-lowest border-2 border-outline-variant rounded-xl hover:border-primary transition-all">
+            <div class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-[28px]">person</span>
+              <div>
+                <p class="font-label-lg text-label-lg">Edit Profile</p>
+                <p class="font-label-md text-on-surface-variant">Update your info and accessibility profile</p>
+              </div>
+            </div>
+            <span class="material-symbols-outlined">arrow_forward_ios</span>
+          </a>
+          <button onclick="clearData()" class="flex items-center justify-between p-5 bg-surface-container-lowest border-2 border-error/30 rounded-xl hover:border-error transition-all w-full text-left">
+            <div class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-[28px] text-error">delete</span>
+              <div>
+                <p class="font-label-lg text-label-lg text-error">Clear All Data</p>
+                <p class="font-label-md text-on-surface-variant">Remove all local data and reset settings</p>
+              </div>
+            </div>
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- Mobile BottomNav -->
+<nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-background border-t-2 border-outline-variant flex justify-around py-3 z-50">
+  <a href="pathsense_accessibility_navigator.html" class="flex flex-col items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined">home</span><span class="text-[10px] font-bold">Home</span></a>
+  <a href="pathsense_interactive_nearby_map.html" class="flex flex-col items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined">explore</span><span class="text-[10px] font-bold">Explore</span></a>
+  <a href="pathsense_community_reports.html" class="flex flex-col items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined">campaign</span><span class="text-[10px] font-bold">Reports</span></a>
+  <a href="pathsense_settings.html" class="flex flex-col items-center gap-1 text-primary"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">settings</span><span class="text-[10px] font-bold">Settings</span></a>
+</nav>
+
+<script src="pathsense_utils.js"></script>
+<script>
+  // Load current settings into toggles
+  const settings = PathSense.getSettings();
+  document.getElementById('toggle-dark').checked = !!settings.darkMode;
+  document.getElementById('toggle-font').checked = !!settings.largeFont;
+  document.getElementById('toggle-contrast').checked = !!settings.highContrast;
+  document.getElementById('toggle-alerts').checked = settings.communityAlerts !== false;
+  document.getElementById('toggle-reviews').checked = settings.reviewUpdates !== false;
+
+  function toggleSetting(key, value) {
+    PathSense.saveSetting(key, value);
+    PathSense.applySettings();
+    PathSense.toast(`Setting updated`, 'success');
+  }
+
+  function clearData() {
+    if (confirm('Are you sure you want to clear all local data? This cannot be undone.')) {
+      localStorage.clear();
+      PathSense.toast('All data cleared', 'info');
+      setTimeout(() => location.reload(), 1000);
+    }
+  }
+</script>
+</body></html>

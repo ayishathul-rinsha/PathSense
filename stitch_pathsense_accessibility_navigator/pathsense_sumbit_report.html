@@ -392,23 +392,26 @@
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const btn = form.querySelector('button[type="submit"]');
-            const originalText = btn.innerText;
             btn.innerText = 'Submitting...';
             btn.classList.add('opacity-50');
+            btn.disabled = true;
 
             const issueTypeSelect = document.getElementById('issue-type');
             const issueType = issueTypeSelect ? issueTypeSelect.value : 'Other';
             const descriptionVal = document.getElementById('description')?.value || '';
+            const locationVal = document.getElementById('location')?.value || 'Unknown Location';
+            const severityVal = document.getElementById('severity')?.value || 'Medium Severity';
+            const titleVal = document.getElementById('report-title')?.value || issueType;
 
             fetch('/api/reports', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    title: issueType,
+                    title: titleVal || issueType,
                     description: descriptionVal,
-                    issue_type: "Medium Severity",
-                    reported_by: "Local Advocate",
-                    category: issueType
+                    issue_type: severityVal,
+                    category: issueType,
+                    location: locationVal
                 })
             })
             .then(res => res.json())
@@ -416,14 +419,19 @@
                 btn.innerText = 'Report Submitted!';
                 btn.classList.remove('bg-secondary');
                 btn.classList.add('bg-green-600');
+                if (window.PathSense) PathSense.toast('Report submitted successfully!', 'success');
                 setTimeout(() => {
                     window.location.href = 'pathsense_community_reports.html?report=submitted';
-                }, 1000);
+                }, 1500);
             })
             .catch(err => {
                 console.error(err);
-                window.location.href = 'pathsense_community_reports.html?report=submitted';
+                if (window.PathSense) PathSense.toast('Error submitting report', 'error');
+                btn.innerText = 'Submit Report';
+                btn.classList.remove('opacity-50');
+                btn.disabled = false;
             });
         });
     </script>
+    <script src="pathsense_utils.js"></script>
 </body></html>

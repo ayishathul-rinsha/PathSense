@@ -152,7 +152,7 @@
 <span>Community Reports</span>
 </a>
 <!-- Settings -->
-<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 font-label-lg text-label-lg rounded-full" href="pathsense_user_profile.html">
+<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200 font-label-lg text-label-lg rounded-full" href="pathsense_settings.html">
 <span class="material-symbols-outlined">settings</span>
 <span>Settings</span>
 </a>
@@ -222,77 +222,8 @@
 </div>
 <div class="bg-surface-container-low border-2 border-outline-variant p-8">
 <p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-2xl">Toggle your specific needs to personalize your navigation results. This information helps us highlight routes and locations that work best for you.</p>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-<!-- Toggle Item 1 -->
-<div class="flex items-center justify-between p-4 bg-surface-container-lowest border-2 border-secondary rounded-xl transition-all">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-secondary" style="font-size: 28px;">accessible</span>
-<div>
-<p class="font-label-lg text-label-lg">Wheelchair Access</p>
-<p class="font-label-md text-label-md text-on-surface-variant">Prioritize step-free</p>
-</div>
-</div>
-<label class="relative inline-flex items-center cursor-pointer">
-<input checked="" class="sr-only peer" type="checkbox"/>
-<div class="w-14 h-8 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-secondary"></div>
-</label>
-</div>
-<!-- Toggle Item 2 -->
-<div class="flex items-center justify-between p-4 bg-surface-container-lowest border-2 border-outline-variant rounded-xl hover:border-primary transition-all">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary" style="font-size: 28px;">visibility</span>
-<div>
-<p class="font-label-lg text-label-lg">Low Vision</p>
-<p class="font-label-md text-label-md text-on-surface-variant">High contrast cues</p>
-</div>
-</div>
-<label class="relative inline-flex items-center cursor-pointer">
-<input class="sr-only peer" type="checkbox"/>
-<div class="w-14 h-8 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-secondary"></div>
-</label>
-</div>
-<!-- Toggle Item 3 -->
-<div class="flex items-center justify-between p-4 bg-surface-container-lowest border-2 border-outline-variant rounded-xl hover:border-primary transition-all">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary" style="font-size: 28px;">hearing</span>
-<div>
-<p class="font-label-lg text-label-lg">Hearing Assistance</p>
-<p class="font-label-md text-label-md text-on-surface-variant">Visual notifications</p>
-</div>
-</div>
-<label class="relative inline-flex items-center cursor-pointer">
-<input class="sr-only peer" type="checkbox"/>
-<div class="w-14 h-8 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-secondary"></div>
-</label>
-</div>
-<!-- Toggle Item 4 -->
-<div class="flex items-center justify-between p-4 bg-surface-container-lowest border-2 border-outline-variant rounded-xl hover:border-primary transition-all">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary" style="font-size: 28px;">psychology</span>
-<div>
-<p class="font-label-lg text-label-lg">Neurodiversity</p>
-<p class="font-label-md text-label-md text-on-surface-variant">Quiet route preference</p>
-</div>
-</div>
-<label class="relative inline-flex items-center cursor-pointer">
-<input class="sr-only peer" type="checkbox"/>
-<div class="w-14 h-8 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-secondary"></div>
-</label>
-</div>
-<!-- Toggle Item 5 -->
-<div class="flex items-center justify-between p-4 bg-surface-container-lowest border-2 border-outline-variant rounded-xl hover:border-primary transition-all">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary" style="font-size: 28px;">assist_walker</span>
-<div>
-<p class="font-label-lg text-label-lg">Limited Mobility</p>
-<p class="font-label-md text-label-md text-on-surface-variant">Frequent rest stops</p>
-</div>
-</div>
-<label class="relative inline-flex items-center cursor-pointer">
-<input class="sr-only peer" type="checkbox"/>
-<div class="w-14 h-8 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-secondary"></div>
-</label>
-</div>
+<div id="disability-toggles" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Populated by JavaScript -->
 </div>
 </div>
 </section>
@@ -441,95 +372,90 @@
 <span class="material-symbols-outlined">campaign</span>
 <span class="text-[10px] font-bold">Alerts</span>
 </button>
-<button onclick="window.location.href='pathsense_user_profile.html'" class="flex flex-col items-center gap-1 text-on-surface-variant">
+<button onclick="window.location.href='pathsense_settings.html'" class="flex flex-col items-center gap-1 text-on-surface-variant">
 <span class="material-symbols-outlined">settings</span>
 <span class="text-[10px] font-bold">Settings</span>
 </button>
 </nav>
-<script>
-        // Toggles mapping matching server's categories: 'mobility', 'visual', 'cognitive' (neurodiversity / hearing / walker, etc.)
-        const toggleMap = {
-            'mobility': 0,      // Wheelchair
-            'visual': 1,        // Low Vision
-            'hearing': 2,       // Hearing Assistance
-            'cognitive': 3,     // Neurodiversity
-            'walker': 4         // Limited Mobility
+    <script src="pathsense_utils.js"></script>
+    <script>
+        const descriptions = {
+            wheelchair: 'Prioritize step-free access',
+            cane_walker: 'Frequent rest stops & handrails',
+            blind: 'High contrast & audio cues',
+            deaf: 'Visual notifications & signage',
+            autism: 'Quiet route preference',
+            anxiety: 'Low-stress navigation',
+            chronic_pain: 'Minimize walking distance'
         };
-        const revToggleMap = ['mobility', 'visual', 'hearing', 'cognitive', 'walker'];
 
-        window.addEventListener('DOMContentLoaded', () => {
-            fetch('/api/profile')
-                .then(res => res.json())
-                .then(data => {
-                    const categories = data.categories || [];
-                    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                    
-                    // Reset all
-                    checkboxes.forEach((cb, idx) => {
-                        cb.checked = false;
-                        updateToggleStyle(cb, false);
-                    });
+        let allCategories = {};
+        let activeCategories = [];
 
-                    // Set active ones
-                    categories.forEach(cat => {
-                        const idx = toggleMap[cat];
-                        if (idx !== undefined && checkboxes[idx]) {
-                            checkboxes[idx].checked = true;
-                            updateToggleStyle(checkboxes[idx], true);
-                        }
-                    });
-                })
-                .catch(err => console.error(err));
+        window.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const [catsRes, profileRes] = await Promise.all([
+                    fetch('/api/categories').then(r=>r.json()),
+                    fetch('/api/profile').then(r=>r.json())
+                ]);
+                allCategories = catsRes;
+                activeCategories = profileRes.categories || [];
+
+                // Update profile stats
+                if (profileRes.reviewsGiven !== undefined) {
+                    const statsEls = document.querySelectorAll('.col-span-6.md\\:col-span-2 .font-headline-lg, [class*="col-span-6"] .font-headline-lg');
+                    // Try to update review count
+                }
+
+                renderToggles();
+            } catch(e) { console.error(e); }
         });
 
-        function updateToggleStyle(checkbox, isChecked) {
-            const parent = checkbox.closest('.flex.items-center.justify-between');
-            if (!parent) return;
-            const icon = parent.querySelector('.material-symbols-outlined');
-            if (isChecked) {
-                parent.classList.remove('border-outline-variant');
-                parent.classList.add('border-secondary');
-                if (icon) {
-                    icon.classList.remove('text-primary');
-                    icon.classList.add('text-secondary');
-                }
-            } else {
-                parent.classList.add('border-outline-variant');
-                parent.classList.remove('border-secondary');
-                if (icon) {
-                    icon.classList.remove('text-secondary');
-                    icon.classList.add('text-primary');
-                }
-            }
+        function renderToggles() {
+            const container = document.getElementById('disability-toggles');
+            container.innerHTML = Object.entries(allCategories).map(([key, cat]) => {
+                const isActive = activeCategories.includes(key);
+                return `
+                <div class="flex items-center justify-between p-4 bg-surface-container-lowest border-2 ${isActive ? 'border-secondary' : 'border-outline-variant'} rounded-xl hover:border-primary transition-all" id="toggle-card-${key}">
+                    <div class="flex items-center gap-4">
+                        <span class="material-symbols-outlined ${isActive ? 'text-secondary' : 'text-primary'}" style="font-size: 28px;" id="toggle-icon-${key}">${cat.icon}</span>
+                        <div>
+                            <p class="font-label-lg text-label-lg">${cat.label}</p>
+                            <p class="font-label-md text-label-md text-on-surface-variant">${descriptions[key] || cat.criteria.length + ' criteria'}</p>
+                        </div>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input ${isActive ? 'checked' : ''} class="sr-only peer" type="checkbox" data-cat="${key}" onchange="toggleCategory('${key}', this.checked)"/>
+                        <div class="w-14 h-8 bg-surface-dim peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-secondary"></div>
+                    </label>
+                </div>`;
+            }).join('');
         }
 
-        // Listen to changes and save to backend
-        document.querySelectorAll('input[type="checkbox"]').forEach((cb, idx) => {
-            cb.addEventListener('change', function() {
-                updateToggleStyle(this, this.checked);
-                saveProfile();
-            });
-        });
-
-        function saveProfile() {
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            const activeCategories = [];
-            checkboxes.forEach((cb, idx) => {
-                if (cb.checked) {
-                    activeCategories.push(revToggleMap[idx]);
-                }
-            });
-
+        function toggleCategory(key, checked) {
+            if (checked && !activeCategories.includes(key)) {
+                activeCategories.push(key);
+            } else if (!checked) {
+                activeCategories = activeCategories.filter(c => c !== key);
+            }
+            // Update visual
+            const card = document.getElementById(`toggle-card-${key}`);
+            const icon = document.getElementById(`toggle-icon-${key}`);
+            if (checked) {
+                card.classList.remove('border-outline-variant'); card.classList.add('border-secondary');
+                icon.classList.remove('text-primary'); icon.classList.add('text-secondary');
+            } else {
+                card.classList.add('border-outline-variant'); card.classList.remove('border-secondary');
+                icon.classList.add('text-primary'); icon.classList.remove('text-secondary');
+            }
+            // Save to backend
             fetch('/api/profile', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ categories: activeCategories })
-            })
-            .then(res => res.json())
-            .then(data => {
-                console.log('Profile saved:', data);
-            })
-            .catch(err => console.error(err));
+            }).then(r=>r.json()).then(data => {
+                PathSense.toast('Profile updated — scores will refresh', 'success');
+            }).catch(e => console.error(e));
         }
     </script>
 </body></html>

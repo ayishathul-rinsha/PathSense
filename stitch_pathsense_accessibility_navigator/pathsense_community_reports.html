@@ -368,12 +368,13 @@
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">campaign</span>
 <span class="text-[10px] font-bold">Reports</span>
 </a>
-<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="pathsense_user_profile.html">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="pathsense_settings.html">
 <span class="material-symbols-outlined">settings</span>
 <span class="text-[10px] font-bold">Settings</span>
 </a>
 </nav>
 </main>
+<script src="pathsense_utils.js"></script>
 <script>
         // Fetch and render community reports dynamically
         window.addEventListener('DOMContentLoaded', () => {
@@ -408,8 +409,11 @@
                             icon = 'construction';
                         }
 
+                        const isResolved = report.status === 'resolved';
+
                         htmlContent += `
-                            <article class="report-card p-6 bg-surface-container-lowest border-2 ${severityClass} rounded-xl">
+                            <article class="report-card p-6 bg-surface-container-lowest border-2 ${isResolved ? 'border-secondary opacity-60' : severityClass} rounded-xl ${isResolved ? 'relative' : ''}">
+                                ${isResolved ? '<div class="absolute top-4 right-4 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-md">Resolved</div>' : ''}
                                 <div class="flex justify-between items-start mb-4">
                                     <div class="flex items-center gap-3">
                                         <span class="px-3 py-1 ${severityBadge} font-label-md text-label-md rounded-lg">${report.issue_type}</span>
@@ -423,18 +427,19 @@
                                     </div>
                                     <div>
                                         <h3 class="font-headline-md text-headline-md text-on-surface mb-1">${report.title}</h3>
-                                        <p class="font-body-md text-body-md text-on-surface-variant mb-4">${report.description}</p>
+                                        <p class="font-body-md text-body-md text-on-surface-variant mb-2">${report.description}</p>
+                                        <p class="font-label-md text-label-md text-outline">Reported by ${report.reported_by} • ${report.location || ''}</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center justify-between border-t-2 border-outline-variant pt-4">
                                     <div class="flex gap-4">
-                                        <button class="flex items-center gap-2 px-4 py-2 border-2 border-outline rounded-lg hover:border-secondary transition-colors group" onclick="toggleVerify(this)">
+                                        <button class="flex items-center gap-2 px-4 py-2 border-2 border-outline rounded-lg hover:border-secondary transition-colors group" onclick="verifyReport(${report.id}, this)" ${isResolved ? 'disabled' : ''}>
                                             <span class="material-symbols-outlined">thumb_up</span>
-                                            <span class="font-label-md text-label-md">Verify (${report.upvotes || 0})</span>
+                                            <span class="font-label-md text-label-md">Verify (${report.verifications || 0})</span>
                                         </button>
-                                        <button class="flex items-center gap-2 px-4 py-2 border-2 border-outline rounded-lg hover:border-error transition-colors">
-                                            <span class="material-symbols-outlined">flag</span>
-                                            <span class="font-label-md text-label-md">Report Error</span>
+                                        <button class="flex items-center gap-2 px-4 py-2 border-2 border-outline rounded-lg hover:border-secondary transition-colors" onclick="resolveReport(${report.id}, this)" ${isResolved ? 'disabled' : ''}>
+                                            <span class="material-symbols-outlined">check_circle</span>
+                                            <span class="font-label-md text-label-md">${isResolved ? 'Resolved' : 'Mark Resolved'}</span>
                                         </button>
                                     </div>
                                     <span class="flex items-center gap-1 font-label-md text-label-md text-on-surface-variant">
@@ -449,22 +454,30 @@
                 .catch(err => console.error(err));
         });
 
-        function toggleVerify(btn) {
-            const span = btn.querySelector('span:last-child');
-            const icon = btn.querySelector('.material-symbols-outlined');
-            const currentCount = parseInt(span.textContent.match(/\d+/)[0]);
-            
-            if (btn.dataset.active === "true") {
-                span.textContent = `Verify (${currentCount - 1})`;
-                btn.classList.remove('bg-secondary-container', 'border-secondary');
-                icon.style.fontVariationSettings = "'FILL' 0";
-                btn.dataset.active = "false";
-            } else {
-                span.textContent = `Verify (${currentCount + 1})`;
-                btn.classList.add('bg-secondary-container', 'border-secondary');
-                icon.style.fontVariationSettings = "'FILL' 1";
-                btn.dataset.active = "true";
-            }
+        function verifyReport(reportId, btn) {
+            fetch(`/api/reports/${reportId}/verify`, { method: 'POST' })
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) {
+                        const span = btn.querySelector('span:last-child');
+                        span.textContent = `Verify (${data.report.verifications})`;
+                        btn.classList.add('bg-secondary-container', 'border-secondary');
+                        btn.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 1";
+                        PathSense.toast('Report verified!', 'success');
+                    }
+                }).catch(() => PathSense.toast('Error verifying report', 'error'));
+        }
+
+        function resolveReport(reportId, btn) {
+            fetch(`/api/reports/${reportId}/resolve`, { method: 'POST' })
+                .then(r => r.json())
+                .then(data => {
+                    if (data.success) {
+                        btn.querySelector('span:last-child').textContent = 'Resolved';
+                        btn.classList.add('bg-secondary-container', 'border-secondary');
+                        PathSense.toast('Report marked as resolved!', 'success');
+                    }
+                }).catch(() => PathSense.toast('Error resolving report', 'error'));
         }
 
         // Search highlight effect

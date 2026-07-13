@@ -1,543 +1,340 @@
 <!DOCTYPE html>
-
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Give Review | PathSense</title>
-<!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;0,700;0,800;1,400&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700;800&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "surface-dim": "#d8dadc",
-                    "primary-fixed-dim": "#bec6e0",
-                    "on-secondary-fixed": "#00201d",
-                    "inverse-primary": "#bec6e0",
-                    "primary": "#000000",
-                    "error-container": "#ffdad6",
-                    "on-tertiary-fixed-variant": "#6e3900",
-                    "secondary-fixed-dim": "#6bd8cb",
-                    "tertiary-container": "#2f1500",
-                    "surface-container-low": "#f2f4f6",
-                    "on-tertiary-container": "#c76c00",
-                    "primary-fixed": "#dae2fd",
-                    "error": "#ba1a1a",
-                    "surface-container-high": "#e6e8ea",
-                    "on-primary-fixed": "#131b2e",
-                    "on-secondary-fixed-variant": "#005049",
-                    "on-primary": "#ffffff",
-                    "tertiary-fixed-dim": "#ffb77d",
-                    "tertiary-fixed": "#ffdcc3",
-                    "inverse-on-surface": "#eff1f3",
-                    "surface-variant": "#e0e3e5",
-                    "on-primary-container": "#7c839b",
-                    "on-surface-variant": "#45464d",
-                    "on-secondary": "#ffffff",
-                    "background": "#f7f9fb",
-                    "surface-container": "#eceef0",
-                    "surface-bright": "#f7f9fb",
-                    "surface-tint": "#565e74",
-                    "primary-container": "#131b2e",
-                    "on-background": "#191c1e",
-                    "surface-container-highest": "#e0e3e5",
-                    "outline": "#76777d",
-                    "on-error": "#ffffff",
-                    "on-secondary-container": "#006f66",
-                    "secondary-container": "#86f2e4",
-                    "surface": "#f7f9fb",
-                    "on-error-container": "#93000a",
-                    "secondary": "#006a61",
-                    "outline-variant": "#c6c6cd",
-                    "inverse-surface": "#2d3133",
-                    "on-tertiary": "#ffffff",
-                    "on-tertiary-fixed": "#2f1500",
-                    "on-primary-fixed-variant": "#3f465c",
-                    "surface-container-lowest": "#ffffff",
-                    "on-surface": "#191c1e",
-                    "secondary-fixed": "#89f5e7",
-                    "tertiary": "#000000"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.125rem",
-                    "lg": "0.25rem",
-                    "xl": "0.5rem",
-                    "full": "0.75rem"
-            },
-            "spacing": {
-                    "gutter": "1.5rem",
-                    "stack-sm": "0.75rem",
-                    "touch-target-min": "48px",
-                    "margin-desktop": "2.5rem",
-                    "margin-mobile": "1.25rem",
-                    "stack-lg": "3rem",
-                    "stack-md": "1.5rem"
-            },
-            "fontFamily": {
-                    "headline-lg-mobile": ["Atkinson Hyperlegible Next"],
-                    "label-lg": ["Atkinson Hyperlegible Next"],
-                    "headline-lg": ["Atkinson Hyperlegible Next"],
-                    "headline-xl": ["Atkinson Hyperlegible Next"],
-                    "body-lg": ["Atkinson Hyperlegible Next"],
-                    "body-md": ["Atkinson Hyperlegible Next"],
-                    "label-md": ["Atkinson Hyperlegible Next"],
-                    "headline-md": ["Atkinson Hyperlegible Next"]
-            },
-            "fontSize": {
-                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "0.01em", "fontWeight": "700"}],
-                    "label-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0.05em", "fontWeight": "700"}],
-                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "0.01em", "fontWeight": "700"}],
-                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "0.02em", "fontWeight": "800"}],
-                    "body-lg": ["20px", {"lineHeight": "30px", "letterSpacing": "0.02em", "fontWeight": "400"}],
-                    "body-md": ["18px", {"lineHeight": "28px", "letterSpacing": "0.02em", "fontWeight": "400"}],
-                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.03em", "fontWeight": "600"}],
-                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0.01em", "fontWeight": "700"}]
-            }
-          },
-        },
-      }
-    </script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: { extend: {
+      "colors":{"surface-dim":"#d8dadc","primary-fixed-dim":"#bec6e0","on-secondary-fixed":"#00201d","inverse-primary":"#bec6e0","primary":"#000000","error-container":"#ffdad6","on-tertiary-fixed-variant":"#6e3900","secondary-fixed-dim":"#6bd8cb","tertiary-container":"#2f1500","surface-container-low":"#f2f4f6","on-tertiary-container":"#c76c00","primary-fixed":"#dae2fd","error":"#ba1a1a","surface-container-high":"#e6e8ea","on-primary-fixed":"#131b2e","on-secondary-fixed-variant":"#005049","on-primary":"#ffffff","tertiary-fixed-dim":"#ffb77d","tertiary-fixed":"#ffdcc3","inverse-on-surface":"#eff1f3","surface-variant":"#e0e3e5","on-primary-container":"#7c839b","on-surface-variant":"#45464d","on-secondary":"#ffffff","background":"#f7f9fb","surface-container":"#eceef0","surface-bright":"#f7f9fb","surface-tint":"#565e74","primary-container":"#131b2e","on-background":"#191c1e","surface-container-highest":"#e0e3e5","outline":"#76777d","on-error":"#ffffff","on-secondary-container":"#006f66","secondary-container":"#86f2e4","surface":"#f7f9fb","on-error-container":"#93000a","secondary":"#006a61","outline-variant":"#c6c6cd","inverse-surface":"#2d3133","on-tertiary":"#ffffff","on-tertiary-fixed":"#2f1500","on-primary-fixed-variant":"#3f465c","surface-container-lowest":"#ffffff","on-surface":"#191c1e","secondary-fixed":"#89f5e7","tertiary":"#000000"},
+      "borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},
+      "spacing":{"gutter":"1.5rem","stack-sm":"0.75rem","touch-target-min":"48px","margin-desktop":"2.5rem","margin-mobile":"1.25rem","stack-lg":"3rem","stack-md":"1.5rem"},
+      "fontFamily":{"headline-lg-mobile":["Atkinson Hyperlegible Next"],"label-lg":["Atkinson Hyperlegible Next"],"headline-lg":["Atkinson Hyperlegible Next"],"headline-xl":["Atkinson Hyperlegible Next"],"body-lg":["Atkinson Hyperlegible Next"],"body-md":["Atkinson Hyperlegible Next"],"label-md":["Atkinson Hyperlegible Next"],"headline-md":["Atkinson Hyperlegible Next"]},
+      "fontSize":{"headline-lg-mobile":["28px",{"lineHeight":"36px","letterSpacing":"0.01em","fontWeight":"700"}],"label-lg":["16px",{"lineHeight":"24px","letterSpacing":"0.05em","fontWeight":"700"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"0.01em","fontWeight":"700"}],"headline-xl":["40px",{"lineHeight":"48px","letterSpacing":"0.02em","fontWeight":"800"}],"body-lg":["20px",{"lineHeight":"30px","letterSpacing":"0.02em","fontWeight":"400"}],"body-md":["18px",{"lineHeight":"28px","letterSpacing":"0.02em","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.03em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"0.01em","fontWeight":"700"}]}
+    }}
+  }
+</script>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .rating-segment.active {
-            background-color: #000000;
-        }
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, padding 0.3s ease;
-        }
-        .accordion-item.open .accordion-content {
-            max-height: 1000px;
-            padding-bottom: 2rem;
-        }
-        .accordion-item.open .chevron {
-            transform: rotate(180deg);
-        }
-    </style>
+  body { font-family: 'Atkinson Hyperlegible Next', sans-serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .rating-btn.active { background-color: #000; color: #fff; border-color: #000; }
+  .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding 0.3s ease; }
+  .accordion-item.open .accordion-content { max-height: 2000px; padding-top: 1rem; padding-bottom: 1.5rem; }
+  .accordion-item.open .chevron { transform: rotate(180deg); }
+  .category-skipped { opacity: 0.4; }
+</style>
 </head>
 <body class="bg-background text-on-surface font-body-md selection:bg-secondary-container">
+
 <!-- TopAppBar -->
 <header class="flex justify-between items-center px-gutter py-4 w-full sticky top-0 z-50 bg-background border-b-2 border-outline-variant">
-<div class="flex items-center gap-4">
-<span class="font-headline-xl text-headline-xl text-primary">PathSense</span>
-</div>
-<div class="flex items-center gap-stack-md">
-<div class="hidden md:flex items-center border-2 border-outline-variant px-4 py-2 rounded-lg bg-surface-container-lowest">
-<span class="material-symbols-outlined text-outline">search</span>
-<input class="bg-transparent border-none focus:ring-0 font-label-lg px-2" placeholder="Search locations..." type="text"/>
-</div>
-<div class="flex items-center gap-4">
-<button class="w-touch-target-min h-touch-target-min flex items-center justify-center hover:bg-surface-container transition-colors rounded-full">
-<span class="material-symbols-outlined">notifications</span>
-</button>
-<button onclick="window.location.href='pathsense_user_profile.html'" class="w-touch-target-min h-touch-target-min flex items-center justify-center hover:bg-surface-container rounded-full transition-colors rounded-full border-2 border-outline-variant">
-<span class="material-symbols-outlined">account_circle</span>
-</button>
-</div>
-</div>
+  <div class="flex items-center gap-4">
+    <button onclick="window.history.back()" class="w-touch-target-min h-touch-target-min flex items-center justify-center hover:bg-surface-container rounded-full transition-colors">
+      <span class="material-symbols-outlined">arrow_back</span>
+    </button>
+    <a href="pathsense_accessibility_navigator.html" class="font-headline-xl text-headline-xl text-primary">PathSense</a>
+  </div>
+  <div class="flex items-center gap-4">
+    <a href="pathsense_community_reports.html" class="w-touch-target-min h-touch-target-min flex items-center justify-center hover:bg-surface-container rounded-full transition-colors">
+      <span class="material-symbols-outlined">notifications</span>
+    </a>
+    <a href="pathsense_user_profile.html" class="w-touch-target-min h-touch-target-min flex items-center justify-center hover:bg-surface-container rounded-full transition-colors border-2 border-outline-variant">
+      <span class="material-symbols-outlined">account_circle</span>
+    </a>
+  </div>
 </header>
+
 <div class="flex min-h-screen">
-<!-- SideNavBar -->
-<aside class="hidden lg:flex flex-col h-screen p-gutter gap-stack-md bg-surface-container-lowest border-r-2 border-outline-variant w-72 sticky top-[80px]">
-<div class="mb-stack-lg">
-<h2 class="font-headline-lg text-headline-lg text-primary">PathSense</h2>
-<p class="font-label-md text-on-surface-variant">Accessible Navigation</p>
+  <!-- SideNavBar -->
+  <aside class="hidden lg:flex flex-col h-screen p-gutter gap-stack-md bg-surface-container-lowest border-r-2 border-outline-variant w-72 sticky top-[80px]">
+    <div class="mb-stack-lg">
+      <h2 class="font-headline-lg text-headline-lg text-primary">PathSense</h2>
+      <p class="font-label-md text-on-surface-variant">Accessible Navigation</p>
+    </div>
+    <div class="flex flex-col gap-2">
+      <a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="pathsense_accessibility_navigator.html">
+        <span class="material-symbols-outlined">home</span><span class="font-label-lg">Home</span></a>
+      <a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="pathsense_user_profile.html">
+        <span class="material-symbols-outlined">person</span><span class="font-label-lg">Profile</span></a>
+      <a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="pathsense_community_reports.html">
+        <span class="material-symbols-outlined">campaign</span><span class="font-label-lg">Community Reports</span></a>
+      <a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="pathsense_settings.html">
+        <span class="material-symbols-outlined">settings</span><span class="font-label-lg">Settings</span></a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-margin-mobile md:p-margin-desktop max-w-5xl mx-auto">
+    <!-- Breadcrumbs -->
+    <nav class="flex items-center gap-2 mb-stack-md text-on-surface-variant">
+      <a class="hover:text-primary underline" href="pathsense_accessibility_navigator.html">Home</a>
+      <span class="material-symbols-outlined text-sm">chevron_right</span>
+      <a id="breadcrumb-place" class="hover:text-primary underline" href="#">Location</a>
+      <span class="material-symbols-outlined text-sm">chevron_right</span>
+      <span class="font-label-md">Give Accessibility Review</span>
+    </nav>
+
+    <!-- Header -->
+    <header class="mb-stack-lg border-l-4 border-secondary pl-6">
+      <h1 class="font-headline-xl text-headline-xl text-primary mb-2">Share Your Experience</h1>
+      <p class="font-body-lg text-on-surface-variant max-w-2xl" id="header-subtitle">Your feedback helps millions navigate safely. Rate the accessibility features below.</p>
+      <a class="inline-flex items-center gap-2 mt-4 text-secondary font-label-lg hover:underline" href="pathsense_community_reports.html">
+        <span class="material-symbols-outlined">analytics</span>View Community Report
+      </a>
+    </header>
+
+    <!-- Form Container -->
+    <div class="bg-surface-container-lowest border-2 border-outline-variant p-gutter rounded-lg">
+      
+      <!-- Step 1: Overall Rating -->
+      <section class="mb-stack-lg border-b-2 border-outline-variant pb-stack-lg">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="bg-primary-container text-on-primary p-3 rounded-xl"><span class="material-symbols-outlined">star</span></div>
+          <h2 class="font-headline-md text-headline-md">Overall Accessibility Rating</h2>
+        </div>
+        <p class="font-body-md text-on-surface-variant mb-6">How would you rate the overall accessibility of this location?</p>
+        <div class="flex gap-3 items-center flex-wrap">
+          <div class="flex gap-1" id="overall-rating">
+            <button class="rating-btn w-14 h-14 border-2 border-outline rounded-lg hover:border-primary transition-all flex items-center justify-center font-bold text-lg" onclick="setOverallRating(1)" type="button">1</button>
+            <button class="rating-btn w-14 h-14 border-2 border-outline rounded-lg hover:border-primary transition-all flex items-center justify-center font-bold text-lg" onclick="setOverallRating(2)" type="button">2</button>
+            <button class="rating-btn w-14 h-14 border-2 border-outline rounded-lg hover:border-primary transition-all flex items-center justify-center font-bold text-lg" onclick="setOverallRating(3)" type="button">3</button>
+            <button class="rating-btn w-14 h-14 border-2 border-outline rounded-lg hover:border-primary transition-all flex items-center justify-center font-bold text-lg" onclick="setOverallRating(4)" type="button">4</button>
+            <button class="rating-btn w-14 h-14 border-2 border-outline rounded-lg hover:border-primary transition-all flex items-center justify-center font-bold text-lg" onclick="setOverallRating(5)" type="button">5</button>
+          </div>
+          <span class="font-label-lg text-outline-variant ml-4" id="overall-label">Select a rating</span>
+        </div>
+      </section>
+
+      <!-- Step 2: Category Sections (Dynamic Accordions) -->
+      <div id="category-sections" class="space-y-4">
+        <!-- Populated by JavaScript -->
+        <div class="flex items-center justify-center py-8 text-on-surface-variant">
+          <span class="material-symbols-outlined animate-spin mr-3">progress_activity</span>
+          Loading accessibility categories...
+        </div>
+      </div>
+
+      <!-- Step 3: Text Review -->
+      <section class="mt-stack-lg pt-stack-lg border-t-2 border-outline-variant">
+        <div class="flex items-center gap-4 mb-4">
+          <div class="bg-secondary-container text-on-secondary-container p-3 rounded-xl"><span class="material-symbols-outlined">edit_note</span></div>
+          <h2 class="font-headline-md text-headline-md">Written Review</h2>
+        </div>
+        <p class="font-body-md text-on-surface-variant mb-4">Share details about your experience to help others.</p>
+        <textarea id="text-review" class="w-full bg-surface-bright border-2 border-outline rounded-lg p-4 focus:border-secondary focus:ring-0 font-body-md text-body-md min-h-[120px]" placeholder="Describe your experience with accessibility at this location..."></textarea>
+      </section>
+
+      <!-- Submit -->
+      <div class="mt-stack-lg pt-stack-md">
+        <button onclick="submitReview()" class="w-full py-5 bg-secondary text-on-secondary font-headline-md text-headline-md rounded-xl hover:bg-on-secondary-container transition-all active:scale-[0.98] border-2 border-transparent focus:border-primary" type="button" id="submit-btn">
+          Submit Review
+        </button>
+        <p class="text-center font-label-md text-label-md text-on-surface-variant mt-4">By submitting, you agree to our Community Guidelines.</p>
+      </div>
+    </div>
+  </main>
 </div>
-<div class="flex flex-col gap-2">
-<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="pathsense_accessibility_navigator.html">
-<span class="material-symbols-outlined">home</span>
-<span class="font-label-lg">Home</span>
-</a>
-<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="pathsense_user_profile.html">
-<span class="material-symbols-outlined">person</span>
-<span class="font-label-lg">Profile</span>
-</a>
-<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="pathsense_community_reports.html">
-<span class="material-symbols-outlined">campaign</span>
-<span class="font-label-lg">Community Reports</span>
-</a>
-<a class="flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-200" href="pathsense_user_profile.html">
-<span class="material-symbols-outlined">settings</span>
-<span class="font-label-lg">Settings</span>
-</a>
-</div>
-<div class="mt-auto">
-<button class="w-full bg-secondary-container text-on-secondary-container font-label-lg py-4 rounded-full border-2 border-secondary Active:scale-[0.98] transition-transform">
-                    Give Review
-                </button>
-</div>
-</aside>
-<!-- Main Content Canvas -->
-<main class="flex-1 p-margin-mobile md:p-margin-desktop max-w-5xl mx-auto">
-<!-- Breadcrumbs -->
-<nav class="flex items-center gap-2 mb-stack-md text-on-surface-variant">
-<a class="hover:text-primary underline" href="#">Grand Central Terminal</a>
-<span class="material-symbols-outlined text-sm">chevron_right</span>
-<span class="font-label-md">Give Accessibility Review</span>
+
+<!-- Mobile BottomNav -->
+<nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-surface-container-lowest border-t-2 border-outline-variant flex justify-around items-center py-2 px-gutter z-50">
+  <a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant" href="pathsense_accessibility_navigator.html">
+    <span class="material-symbols-outlined">home</span><span class="font-label-md text-label-md">Home</span></a>
+  <a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant" href="pathsense_interactive_nearby_map.html">
+    <span class="material-symbols-outlined">explore</span><span class="font-label-md text-label-md">Explore</span></a>
+  <a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant" href="pathsense_community_reports.html">
+    <span class="material-symbols-outlined">campaign</span><span class="font-label-md text-label-md">Reports</span></a>
+  <a class="flex flex-col items-center gap-1 p-2 text-on-surface-variant" href="pathsense_user_profile.html">
+    <span class="material-symbols-outlined">person</span><span class="font-label-md text-label-md">Profile</span></a>
 </nav>
-<!-- Header Section -->
-<header class="mb-stack-lg border-l-4 border-secondary pl-6">
-<h1 class="font-headline-xl text-headline-xl text-primary mb-2">Share Your Experience</h1>
-<p class="font-body-lg text-on-surface-variant max-w-2xl">Your feedback helps millions navigate safely. Please provide detailed accessibility ratings for Grand Central Terminal.</p>
-<a class="inline-flex items-center gap-2 mt-4 text-secondary font-label-lg hover:underline" href="#">
-<span class="material-symbols-outlined">analytics</span>
-                    View Community Report
-                </a>
-</header>
-<!-- Form Container -->
-<div class="bg-surface-container-lowest border-2 border-outline-variant p-gutter rounded-lg">
-<!-- Step 1: Overall Rating -->
-<section class="mb-stack-lg border-b-2 border-outline-variant pb-stack-lg">
-<div class="flex items-center gap-4 mb-4">
-<div class="bg-primary-container text-on-primary p-3 rounded-xl">
-<span class="material-symbols-outlined">star</span>
-</div>
-<h2 class="font-headline-md text-headline-md">Overall Accessibility</h2>
-</div>
-<p class="font-body-md text-on-surface-variant mb-6">How would you rate the overall accessibility of this location?</p>
-<div class="flex gap-4 items-center">
-<div class="flex gap-1" id="overall-rating">
-<!-- Rating Blocks -->
-<button class="w-12 h-12 border-2 border-outline rounded-sm hover:border-primary transition-colors flex items-center justify-center font-bold" onclick="setRating('overall', 1)" type="button">1</button>
-<button class="w-12 h-12 border-2 border-outline rounded-sm hover:border-primary transition-colors flex items-center justify-center font-bold" onclick="setRating('overall', 2)" type="button">2</button>
-<button class="w-12 h-12 border-2 border-outline rounded-sm hover:border-primary transition-colors flex items-center justify-center font-bold" onclick="setRating('overall', 3)" type="button">3</button>
-<button class="w-12 h-12 border-2 border-outline rounded-sm hover:border-primary transition-colors flex items-center justify-center font-bold" onclick="setRating('overall', 4)" type="button">4</button>
-<button class="w-12 h-12 border-2 border-outline rounded-sm hover:border-primary transition-colors flex items-center justify-center font-bold" onclick="setRating('overall', 5)" type="button">5</button>
-</div>
-<span class="font-label-lg text-outline-variant ml-4" id="overall-label">Select a rating</span>
-</div>
-</section>
-<!-- Step 2: Specialized Sections (Accordion) -->
-<div class="space-y-4">
-<!-- Wheelchair Section -->
-<div class="accordion-item border-2 border-outline rounded-lg overflow-hidden transition-all duration-300 bg-surface-bright" id="acc-wheelchair">
-<button class="w-full flex items-center justify-between p-6 hover:bg-surface-container transition-colors" onclick="toggleAccordion('wheelchair')">
-<div class="flex items-center gap-6">
-<span class="material-symbols-outlined text-3xl">accessible</span>
-<div class="text-left">
-<h3 class="font-headline-md text-headline-md">Wheelchair Accessibility</h3>
-<p class="font-label-md text-on-surface-variant">Ramps, restrooms, elevators</p>
-</div>
-</div>
-<span class="material-symbols-outlined chevron transition-transform text-3xl">expand_more</span>
-</button>
-<div class="accordion-content px-12">
-<div class="space-y-stack-md pt-4">
-<div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-center">
-<div>
-<p class="font-label-lg">Ramp Steepness &amp; Width</p>
-<p class="text-sm text-on-surface-variant">Are ramps gentle and wide enough?</p>
-</div>
-<div class="flex items-center gap-4">
-<div class="flex gap-1 h-8">
-<div class="w-8 border-2 border-outline rounded-sm cursor-pointer hover:bg-primary-container transition-colors"></div>
-<div class="w-8 border-2 border-outline rounded-sm cursor-pointer"></div>
-<div class="w-8 border-2 border-outline rounded-sm cursor-pointer"></div>
-<div class="w-8 border-2 border-outline rounded-sm cursor-pointer"></div>
-<div class="w-8 border-2 border-outline rounded-sm cursor-pointer"></div>
-</div>
-<button class="text-secondary font-label-md hover:underline px-4 py-2">Skip</button>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-center border-t border-outline-variant pt-4">
-<p class="font-label-lg">Restroom Accessibility</p>
-<div class="flex items-center gap-4">
-<div class="flex gap-1 h-8">
-<div class="w-8 border-2 border-outline rounded-sm cursor-pointer"></div>
-<div class="w-8 border-2 border-outline rounded-sm cursor-pointer"></div>
-<div class="w-8 border-2 border-outline rounded-sm cursor-pointer"></div>
-<div class="w-8 border-2 border-outline rounded-sm cursor-pointer"></div>
-<div class="w-8 border-2 border-outline rounded-sm cursor-pointer"></div>
-</div>
-<button class="text-secondary font-label-md hover:underline px-4 py-2">Skip</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Mobility Aids Section -->
-<div class="accordion-item border-2 border-outline rounded-lg overflow-hidden transition-all duration-300 bg-surface-bright" id="acc-mobility">
-<button class="w-full flex items-center justify-between p-6 hover:bg-surface-container transition-colors" onclick="toggleAccordion('mobility')">
-<div class="flex items-center gap-6">
-<span class="material-symbols-outlined text-3xl">blind</span>
-<div class="text-left">
-<h3 class="font-headline-md text-headline-md">Mobility Aids</h3>
-<p class="font-label-md text-on-surface-variant">Stairs, handrails, seating</p>
-</div>
-</div>
-<span class="material-symbols-outlined chevron transition-transform text-3xl">expand_more</span>
-</button>
-<div class="accordion-content px-12">
-<div class="space-y-stack-md pt-4">
-<div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-center">
-<p class="font-label-lg">Handrail Presence &amp; Grip</p>
-<div class="flex items-center gap-4">
-<div class="flex gap-1 h-8">
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-</div>
-<button class="text-secondary font-label-md hover:underline px-4 py-2">Skip</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Vision Section -->
-<div class="accordion-item border-2 border-outline rounded-lg overflow-hidden transition-all duration-300 bg-surface-bright" id="acc-vision">
-<button class="w-full flex items-center justify-between p-6 hover:bg-surface-container transition-colors" onclick="toggleAccordion('vision')">
-<div class="flex items-center gap-6">
-<span class="material-symbols-outlined text-3xl">visibility</span>
-<div class="text-left">
-<h3 class="font-headline-md text-headline-md">Vision Accessibility</h3>
-<p class="font-label-md text-on-surface-variant">Lighting, Braille, high contrast</p>
-</div>
-</div>
-<span class="material-symbols-outlined chevron transition-transform text-3xl">expand_more</span>
-</button>
-<div class="accordion-content px-12">
-<div class="space-y-stack-md pt-4">
-<div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-center">
-<p class="font-label-lg">Braille Signage Accuracy</p>
-<div class="flex items-center gap-4">
-<div class="flex gap-1 h-8">
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-</div>
-<button class="text-secondary font-label-md hover:underline px-4 py-2">Skip</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Hearing Section -->
-<div class="accordion-item border-2 border-outline rounded-lg overflow-hidden transition-all duration-300 bg-surface-bright" id="acc-hearing">
-<button class="w-full flex items-center justify-between p-6 hover:bg-surface-container transition-colors" onclick="toggleAccordion('hearing')">
-<div class="flex items-center gap-6">
-<span class="material-symbols-outlined text-3xl">hearing</span>
-<div class="text-left">
-<h3 class="font-headline-md text-headline-md">Hearing Accessibility</h3>
-<p class="font-label-md text-on-surface-variant">Visual alarms, hearing loops</p>
-</div>
-</div>
-<span class="material-symbols-outlined chevron transition-transform text-3xl">expand_more</span>
-</button>
-<div class="accordion-content px-12">
-<div class="space-y-stack-md pt-4">
-<div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-center">
-<p class="font-label-lg">Visual Alarm Visibility</p>
-<div class="flex items-center gap-4">
-<div class="flex gap-1 h-8">
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-</div>
-<button class="text-secondary font-label-md hover:underline px-4 py-2">Skip</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Sensory Section -->
-<div class="accordion-item border-2 border-outline rounded-lg overflow-hidden transition-all duration-300 bg-surface-bright" id="acc-sensory">
-<button class="w-full flex items-center justify-between p-6 hover:bg-surface-container transition-colors" onclick="toggleAccordion('sensory')">
-<div class="flex items-center gap-6">
-<span class="material-symbols-outlined text-3xl">psychology</span>
-<div class="text-left">
-<h3 class="font-headline-md text-headline-md">Sensory Environment</h3>
-<p class="font-label-md text-on-surface-variant">Noise levels, crowding, lighting</p>
-</div>
-</div>
-<span class="material-symbols-outlined chevron transition-transform text-3xl">expand_more</span>
-</button>
-<div class="accordion-content px-12">
-<div class="space-y-stack-md pt-4">
-<div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 items-center">
-<p class="font-label-lg">Noise &amp; Echo Dampening</p>
-<div class="flex items-center gap-4">
-<div class="flex gap-1 h-8">
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-<div class="w-8 border-2 border-outline rounded-sm"></div>
-</div>
-<button class="text-secondary font-label-md hover:underline px-4 py-2">Skip</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Final Section: Text Review -->
-<section class="mt-stack-lg pt-stack-lg border-t-2 border-outline-variant">
-<div class="flex items-center gap-4 mb-6">
-<div class="bg-primary-container text-on-primary p-3 rounded-xl">
-<span class="material-symbols-outlined">edit_note</span>
-</div>
-<h2 class="font-headline-md text-headline-md">Detailed Feedback</h2>
-</div>
-<div class="space-y-4">
-<label class="font-label-lg block" for="review-text">Share any specific tips or warnings for other users:</label>
-<textarea class="w-full border-2 border-outline p-4 font-body-md focus:border-secondary focus:ring-0 rounded-lg bg-surface-bright" id="review-text" placeholder="Describe your experience in detail..." rows="6"></textarea>
-</div>
-<div class="mt-stack-lg flex flex-col md:flex-row items-center justify-between gap-6">
-<div class="flex items-center gap-3 text-on-surface-variant">
-<input class="w-6 h-6 border-2 border-outline text-secondary focus:ring-secondary rounded-sm" id="anon" type="checkbox"/>
-<label class="font-label-md" for="anon">Submit this review anonymously</label>
-</div>
-<div class="flex gap-4 w-full md:w-auto">
-<button onclick="window.history.back()" class="flex-1 md:flex-none px-8 py-4 border-2 border-outline text-primary font-bold hover:bg-surface-container transition-colors rounded-full">Cancel</button>
-<button onclick="submitReview()" class="flex-1 md:flex-none px-12 py-4 bg-secondary text-on-secondary font-bold hover:bg-on-secondary-fixed-variant transition-all transform hover:scale-[1.02] shadow-lg rounded-full">Submit Review</button>
-</div>
-</div>
-</section>
-</div>
-<!-- Helpful Reminder Banner -->
-<div class="mt-stack-lg bg-tertiary-fixed text-on-tertiary-fixed p-6 rounded-lg flex items-start gap-4 border-2 border-tertiary-container">
-<span class="material-symbols-outlined text-3xl">info</span>
-<div>
-<h4 class="font-headline-md text-headline-md leading-tight">Reviewing as a Local Guide</h4>
-<p class="font-body-md mt-2">Your contribution will earn you 50 PathSense points. High-quality reviews with detailed category ratings are featured in the Weekly Transit Brief.</p>
-</div>
-</div>
-<!-- Spacing for Bottom Nav on Mobile -->
-<div class="h-24 lg:hidden"></div>
-</main>
-</div>
-<!-- Mobile Bottom Navigation -->
-<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container-lowest border-t-2 border-outline-variant flex justify-around py-4 z-50">
-<button onclick="window.location.href='pathsense_accessibility_navigator.html'" class="flex flex-col items-center gap-1 text-on-surface-variant">
-<span class="material-symbols-outlined">home</span>
-<span class="text-xs font-label-md">Home</span>
-</button>
-<button onclick="window.location.href='pathsense_give_a_review.html'" class="flex flex-col items-center gap-1 text-secondary font-bold">
-<span class="material-symbols-outlined">add_circle</span>
-<span class="text-xs font-label-md">Review</span>
-</button>
-<button onclick="window.location.href='pathsense_community_reports.html'" class="flex flex-col items-center gap-1 text-on-surface-variant">
-<span class="material-symbols-outlined">campaign</span>
-<span class="text-xs font-label-md">Reports</span>
-</button>
-<button onclick="window.location.href='pathsense_user_profile.html'" class="flex flex-col items-center gap-1 text-on-surface-variant">
-<span class="material-symbols-outlined">person</span>
-<span class="text-xs font-label-md">Profile</span>
-</button>
-</nav>
+
+<script src="pathsense_utils.js"></script>
 <script>
-        function toggleAccordion(id) {
-            const item = document.getElementById('acc-' + id);
-            const isOpen = item.classList.contains('open');
-            
-            // Close others (optional - keeps it clean)
-            document.querySelectorAll('.accordion-item').forEach(acc => {
-                acc.classList.remove('open');
-            });
+  // ─── STATE ─────────────────────────────────────────
+  let placeId = 'central_library';
+  let overallRating = 0;
+  let categoryRatings = {};
+  let skippedCategories = {};
+  let categories = {};
 
-            if (!isOpen) {
-                item.classList.add('open');
-            }
-        }
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('place_id')) placeId = urlParams.get('place_id');
 
-        function setRating(type, value) {
-            const container = document.getElementById(type + '-rating');
-            const label = document.getElementById(type + '-label');
-            const buttons = container.querySelectorAll('button');
-            
-            const labels = ["Poor", "Fair", "Good", "Very Good", "Excellent"];
-            label.innerText = labels[value - 1];
-            label.className = "font-label-lg text-primary ml-4";
+  const ratingLabels = ['','Poor','Below Average','Average','Good','Excellent'];
 
-            buttons.forEach((btn, idx) => {
-                if (idx < value) {
-                    btn.classList.add('bg-primary', 'text-on-primary', 'border-primary');
-                    btn.classList.remove('border-outline');
-                } else {
-                    btn.classList.remove('bg-primary', 'text-on-primary', 'border-primary');
-                    btn.classList.add('border-outline');
-                }
-            });
-        }
+  // ─── LOAD PLACE INFO ──────────────────────────────
+  fetch(`/api/places/${placeId}`).then(r=>r.json()).then(place => {
+    document.getElementById('breadcrumb-place').textContent = place.name;
+    document.getElementById('breadcrumb-place').href = `pathsense_location_details.html?place_id=${placeId}`;
+    document.getElementById('header-subtitle').textContent = `Rate the accessibility features of ${place.name} to help others navigate safely.`;
+  }).catch(()=>{});
 
-        // Initialize first section open
-        let currentPlaceId = 'central_library';
-        let overallRating = 5; // default
+  // ─── LOAD CATEGORIES ──────────────────────────────
+  fetch('/api/categories').then(r=>r.json()).then(cats => {
+    categories = cats;
+    renderCategorySections(cats);
+  }).catch(()=>{});
 
-        window.onload = () => {
-            toggleAccordion('wheelchair');
-            
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('place_id')) {
-                currentPlaceId = urlParams.get('place_id');
-            }
+  function setOverallRating(val) {
+    overallRating = val;
+    document.querySelectorAll('#overall-rating .rating-btn').forEach((btn, i) => {
+      btn.classList.toggle('active', i < val);
+    });
+    document.getElementById('overall-label').textContent = `${val}/5 — ${ratingLabels[val]}`;
+  }
 
-            // Fetch place name for heading on load
-            fetch(`/api/places/${currentPlaceId}`)
-                .then(res => res.json())
-                .then(place => {
-                    if (place) {
-                        const placeLink = document.querySelector('a.hover\\:text-primary');
-                        if (placeLink) {
-                            placeLink.textContent = place.name;
-                            placeLink.href = `pathsense_location_details.html?place_id=${place.id}`;
-                        }
-                    }
-                })
-                .catch(err => console.error(err));
-        };
+  function renderCategorySections(cats) {
+    const container = document.getElementById('category-sections');
+    container.innerHTML = Object.entries(cats).map(([catKey, cat]) => {
+      categoryRatings[catKey] = {};
+      return `
+        <div class="accordion-item border-2 border-outline rounded-lg overflow-hidden transition-all duration-300 bg-surface-bright" id="acc-${catKey}">
+          <button class="w-full flex items-center justify-between p-5 hover:bg-surface-container transition-colors" onclick="toggleAccordion('${catKey}')">
+            <div class="flex items-center gap-5">
+              <div class="bg-surface-container-high p-2 rounded-lg">
+                <span class="material-symbols-outlined text-2xl">${cat.icon}</span>
+              </div>
+              <div class="text-left">
+                <h3 class="font-headline-md text-headline-md text-[20px]">${cat.label}</h3>
+                <p class="font-label-md text-on-surface-variant">${cat.criteria.length} criteria to rate</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="font-label-md text-on-surface-variant" id="status-${catKey}"></span>
+              <span class="material-symbols-outlined chevron transition-transform text-2xl">expand_more</span>
+            </div>
+          </button>
+          <div class="accordion-content px-6 md:px-10">
+            <div class="space-y-6">
+              ${cat.criteria.map(c => `
+                <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-3 items-center pb-4 border-b border-outline-variant last:border-b-0" id="criterion-${catKey}-${c.key}">
+                  <div>
+                    <p class="font-label-lg text-label-lg">${c.label}</p>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <div class="flex gap-1">
+                      ${[1,2,3,4,5].map(v => `
+                        <button class="rating-btn w-10 h-10 border-2 border-outline rounded-lg cursor-pointer hover:bg-primary-container transition-all flex items-center justify-center font-bold text-sm"
+                          onclick="setCriterionRating('${catKey}','${c.key}',${v},this)" type="button">${v}</button>
+                      `).join('')}
+                    </div>
+                    <button class="text-secondary font-label-md hover:underline px-3 py-2 rounded hover:bg-surface-container transition-colors" onclick="skipCriterion('${catKey}','${c.key}')">Skip</button>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+            <div class="flex justify-between items-center mt-6">
+              <button class="text-on-surface-variant font-label-lg hover:text-error transition-colors flex items-center gap-2" onclick="skipCategory('${catKey}')">
+                <span class="material-symbols-outlined text-sm">skip_next</span>Skip entire category
+              </button>
+              <button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-lg hover:opacity-90 transition-all" onclick="toggleAccordion('${catKey}')">Done</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
 
-        const originalSetRating = window.setRating;
-        window.setRating = function(type, value) {
-            if (type === 'overall') {
-                overallRating = value;
-            }
-            if (typeof originalSetRating === 'function') {
-                originalSetRating(type, value);
-            }
-        };
+  function toggleAccordion(catKey) {
+    const el = document.getElementById(`acc-${catKey}`);
+    el.classList.toggle('open');
+  }
 
-        function submitReview() {
-            const isAnon = document.getElementById('anon').checked;
-            const reviewerName = isAnon ? "Anonymous Advocate" : "Jane Doe (Local Guide)";
-            const reviewComment = document.getElementById('review-text')?.value || "Verified accessibility criteria met.";
+  function setCriterionRating(catKey, criterionKey, value, btnEl) {
+    if (!categoryRatings[catKey]) categoryRatings[catKey] = {};
+    categoryRatings[catKey][criterionKey] = value;
+    
+    // Update button visual
+    const container = btnEl.closest('.flex.gap-1');
+    container.querySelectorAll('.rating-btn').forEach((btn, i) => {
+      btn.classList.toggle('active', i < value);
+    });
 
-            fetch('/api/reports', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    place_id: currentPlaceId,
-                    title: `Review for ${document.querySelector('a.hover\\:text-primary')?.textContent || 'Location'}`,
-                    description: `Rating: ${overallRating}.0/5.0. User commented: "${reviewComment}"`,
-                    issue_type: "Fixed",
-                    reported_by: reviewerName,
-                    category: "Verified Reviews"
-                })
-            })
-            .then(res => res.json())
-            .then(data => {
-                window.location.href = 'pathsense_places_near_me.html?review=submitted';
-            })
-            .catch(err => {
-                console.error(err);
-                window.location.href = 'pathsense_places_near_me.html?review=submitted';
-            });
-        }
-    </script>
+    updateCategoryStatus(catKey);
+  }
+
+  function skipCriterion(catKey, criterionKey) {
+    const el = document.getElementById(`criterion-${catKey}-${criterionKey}`);
+    el.classList.add('category-skipped');
+    if (categoryRatings[catKey]) delete categoryRatings[catKey][criterionKey];
+    updateCategoryStatus(catKey);
+  }
+
+  function skipCategory(catKey) {
+    skippedCategories[catKey] = true;
+    categoryRatings[catKey] = {};
+    const el = document.getElementById(`acc-${catKey}`);
+    el.classList.remove('open');
+    el.classList.add('category-skipped');
+    document.getElementById(`status-${catKey}`).innerHTML = '<span class="text-on-surface-variant">Skipped</span>';
+  }
+
+  function updateCategoryStatus(catKey) {
+    const cat = categories[catKey];
+    if (!cat) return;
+    const rated = Object.keys(categoryRatings[catKey] || {}).length;
+    const total = cat.criteria.length;
+    const statusEl = document.getElementById(`status-${catKey}`);
+    if (rated > 0) {
+      statusEl.innerHTML = `<span class="text-secondary font-bold">${rated}/${total}</span>`;
+    }
+  }
+
+  // ─── SUBMIT ────────────────────────────────────────
+  function submitReview() {
+    if (overallRating === 0) {
+      PathSense.toast('Please select an overall rating', 'error');
+      return;
+    }
+
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Submitting...';
+    btn.classList.add('opacity-60');
+    btn.disabled = true;
+
+    // Build category ratings (exclude skipped and empty)
+    const filteredRatings = {};
+    Object.entries(categoryRatings).forEach(([cat, ratings]) => {
+      if (!skippedCategories[cat] && Object.keys(ratings).length > 0) {
+        filteredRatings[cat] = ratings;
+      }
+    });
+
+    const userTypes = Object.keys(filteredRatings).map(k => {
+      const cat = categories[k];
+      return cat ? cat.label.split(' /')[0].split(' or ')[0] : k;
+    });
+
+    fetch(`/api/reviews/${placeId}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        overallRating: overallRating,
+        text: document.getElementById('text-review').value,
+        categoryRatings: filteredRatings,
+        userType: userTypes.join(', ') || 'Community Member'
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+      btn.textContent = 'Review Submitted!';
+      btn.classList.remove('opacity-60');
+      btn.classList.remove('bg-secondary');
+      btn.classList.add('bg-green-600');
+      PathSense.toast('Review submitted successfully!', 'success');
+      setTimeout(() => {
+        window.location.href = `pathsense_location_details.html?place_id=${placeId}`;
+      }, 1500);
+    })
+    .catch(err => {
+      btn.textContent = 'Submit Review';
+      btn.classList.remove('opacity-60');
+      btn.disabled = false;
+      PathSense.toast('Error submitting review. Please try again.', 'error');
+    });
+  }
+</script>
 </body></html>
