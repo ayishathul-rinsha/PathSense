@@ -115,4 +115,29 @@
     }, 3000);
   };
 
+  // ─── GLOBAL FETCH INTERCEPTOR FOR DEPLOYMENT ─────────────────
+  const originalFetch = window.fetch;
+  window.fetch = function(input, init) {
+    let url = typeof input === 'string' ? input : (input instanceof Request ? input.url : '');
+    if (url.startsWith('/api/') || url.startsWith(window.location.origin + '/api/')) {
+      const apiBase = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+        ? ''
+        : (window.PathSense_API_BASE_URL || 'https://pathsense-backend.onrender.com');
+      
+      if (typeof input === 'string') {
+        if (input.startsWith(window.location.origin + '/api/')) {
+          input = apiBase + input.substring(window.location.origin.length);
+        } else {
+          input = apiBase + input;
+        }
+      } else if (input instanceof Request) {
+        const cleanPath = input.url.startsWith(window.location.origin)
+          ? input.url.substring(window.location.origin.length)
+          : input.url;
+        input = new Request(apiBase + cleanPath, input);
+      }
+    }
+    return originalFetch(input, init);
+  };
+
 })();

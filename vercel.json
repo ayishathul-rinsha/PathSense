@@ -1,0 +1,9 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/stitch_pathsense_accessibility_navigator/$1"
+    }
+  ]
+}
